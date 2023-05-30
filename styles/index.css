@@ -1,0 +1,184 @@
+/* Normalization */
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Global: General */
+  
+body {
+    background-color: #111;
+    color: #fff;
+    font-family: 'Noto Sans TC', sans-serif, serif;
+    font-size: 1.75rem;
+    font-weight: 300;
+}
+   
+a {
+    color: #ccc;
+}
+
+a:hover {
+    color: #fff;
+}
+
+a:active {
+    color: #fff;
+}
+  
+.interactive {
+    background-color: #333;
+    border-color: #fff;
+    border-radius: 1.75rem;
+    border-style: solid;
+    border-width: 2px;
+    color: #fff;
+    cursor:pointer;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    height: 3.25rem;
+    margin: 0.5rem 0;
+    padding: 0 1rem;
+}
+
+.interactive:hover {
+    background-color: #444;
+}
+
+.interactive:active {
+    background-color: #111;
+}
+
+
+/* Global: Resposive */
+
+@media (max-width: 1080px) {
+    body {
+        font-size: 3rem;
+    }
+
+    .interactive {
+        height: 4.5rem;
+    }
+}
+
+/* Header & Navigation */
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 10%;
+}
+
+#navTitle h1 a {
+    color: #f7d089;
+    text-decoration: none;
+}
+
+#navIcon {
+    display: none;
+    cursor: pointer;
+}
+
+@media (max-width: 1080px) {
+    #navIcon {
+        display: inline-block;
+    }
+}
+
+#navIcon * {
+    width: 3.25rem;
+    height: 0.25rem;
+    background-color: #ccc;
+    margin: 1rem 0;
+    transition: 0.5s;
+}
+
+#navIcon:hover *, #navIcon:focus *, #navIcon:active * {
+    background-color: #fff;
+}
+
+
+
+#navIcon.change #bar1 {
+    transform: translate(0, 1.25rem) rotate(45deg);
+}
+
+#navIcon.change #bar2 {
+    opacity: 0;
+}
+
+#navIcon.change #bar3 {
+    transform: translate(0, -1.25rem) rotate(-45deg);
+}
+
+
+#navItems {
+    display: flex;
+    gap: 2rem;
+}
+
+@media (max-width: 1080px) {
+    #navItems {
+        display: none;
+    }
+}
+
+#navItems a {
+    font-weight: 500;
+    text-decoration: none;
+}
+
+#navItems a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.25rem;
+    text-underline-offset: 0.5rem;
+}
+
+/* Main */
+
+h2 {
+    color: #f7d089;
+}
+
+h2, h3 {
+    margin: 0.25rem 0;
+}
+
+#mainBanner {
+    width: 100%;
+    height: 80vh;
+    background:
+        linear-gradient(.25turn, #111, rgba(0,0,0,0)) center / 100% 100%,
+        url("../images/沒有電影的電影節－劇照01.jpg") no-repeat center/ cover;
+}
+
+#mainBanner .container {
+    height: 100%;
+}
+
+#mainBanner .displayText {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    margin: 0 10%;
+}
+
+#mainBanner .displayText button {
+    text-align: left;
+    width: fit-content;
+}
+
+/* Footer */
+
+footer {
+    margin: 5rem 0;
+    text-align: center;
+}
