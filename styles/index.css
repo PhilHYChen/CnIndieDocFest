@@ -30,7 +30,7 @@ a:active {
     color: #fff;
 }
   
-.interactive {
+button, input, select {
     background-color: #333;
     border-color: #fff;
     border-radius: 1.75rem;
@@ -46,26 +46,28 @@ a:active {
     padding: 0 1rem;
 }
 
-.interactive:hover {
+button:hover, input:hover, select:hover {
     background-color: #444;
 }
 
-.interactive:active {
+button:active,input:active, select:active {
     background-color: #111;
 }
 
 
 /* Global: Resposive */
-
-@media (max-width: 1080px) {
+/* 
+@media (max-width: 1280px) {
     body {
-        font-size: 3rem;
+        font-size: 4.5vw;
     }
 
-    .interactive {
-        height: 4.5rem;
+    button, input, select {
+        border-radius: 4.5vw;
+        height: 9vw;
+        padding: 0 3vw;
     }
-}
+} */
 
 /* Header & Navigation */
 
@@ -76,56 +78,78 @@ nav {
     margin: 0 10%;
 }
 
+nav.dropdown {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#navTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+@media (min-width: 1280px) {
+    #navTitle {
+        width: auto;
+    }
+}
+
 #navTitle h1 a {
     color: #f7d089;
     text-decoration: none;
 }
 
-#navIcon {
-    display: none;
+#navBtn {
     cursor: pointer;
+    margin: 0.5rem 0 0;
 }
 
-@media (max-width: 1080px) {
-    #navIcon {
-        display: inline-block;
+@media (min-width: 1280px) {
+    #navBtn {
+        display: none;
     }
 }
 
-#navIcon * {
-    width: 3.25rem;
+#navBtn * {
+    width: 3rem;
     height: 0.25rem;
     background-color: #ccc;
-    margin: 1rem 0;
+    margin: 0.75rem 0;
     transition: 0.5s;
 }
 
-#navIcon:hover *, #navIcon:focus *, #navIcon:active * {
+#navBtn:hover *, #navBtn:focus * {
     background-color: #fff;
 }
 
-
-
-#navIcon.change #bar1 {
-    transform: translate(0, 1.25rem) rotate(45deg);
+#navBtn:active * {
+    background-color: #f7d089;
 }
 
-#navIcon.change #bar2 {
+
+.dropdown #bar1 {
+    transform: translate(0, 1rem) rotate(45deg);
+}
+
+.dropdown #bar2 {
     opacity: 0;
 }
 
-#navIcon.change #bar3 {
-    transform: translate(0, -1.25rem) rotate(-45deg);
+.dropdown #bar3 {
+    transform: translate(0, -1rem) rotate(-45deg);
 }
 
 
 #navItems {
     display: flex;
     gap: 2rem;
+    transform: 0.5s;
 }
 
-@media (max-width: 1080px) {
-    #navItems {
+@media (max-width: 1280px) {
+    nav:not(.dropdown) #navItems {
         display: none;
     }
 }
@@ -141,6 +165,14 @@ nav {
     text-underline-offset: 0.5rem;
 }
 
+.dropdown #navItems {
+    background-color: #111;
+    flex-direction: column;
+    padding: 0 0 2rem;
+    width: 100%;
+}
+
+
 /* Main */
 
 h2 {
@@ -153,7 +185,7 @@ h2, h3 {
 
 #mainBanner {
     width: 100%;
-    height: 80vh;
+    height: 60vh;
     background:
         linear-gradient(.25turn, #111, rgba(0,0,0,0)) center / 100% 100%,
         url("../images/沒有電影的電影節－劇照01.jpg") no-repeat center/ cover;

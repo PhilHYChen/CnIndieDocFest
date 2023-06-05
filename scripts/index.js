@@ -1,4 +1,4 @@
 // Nav Icon
-document.getElementById("navIcon").addEventListener("click", () => {
-    document.getElementById("navIcon").classList.toggle("change");
+document.getElementById("navBtn").addEventListener("click", () => {
+    document.querySelector("nav").classList.toggle("dropdown");
 });
