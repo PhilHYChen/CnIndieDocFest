@@ -54,6 +54,11 @@ button:active,input:active, select:active {
     background-color: #111;
 }
 
+hr {
+    color: #ccc;
+    margin: 0 12.5%;
+}
+
 
 /* Global: Resposive */
 /* 
@@ -75,7 +80,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 10%;
+    margin: 0 12.5%;
 }
 
 nav.dropdown {
@@ -172,16 +177,27 @@ nav.dropdown {
     width: 100%;
 }
 
-
-/* Main */
+/* Main: General */
 
 h2 {
     color: #f7d089;
 }
 
-h2, h3 {
-    margin: 0.25rem 0;
+section:not(#mainBanner) {
+    margin: 5rem 12.5%;
 }
+
+section:not(#mainBanner) h2 {
+    text-align: center;
+}
+
+section:not(#mainBanner) .btnContainer {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+/* Main: Banner */
+
 
 #mainBanner {
     width: 100%;
@@ -200,13 +216,54 @@ h2, h3 {
     flex-direction: column;
     height: 100%;
     justify-content: center;
-    margin: 0 10%;
+    margin: 0 12.5%;
 }
 
-#mainBanner .displayText button {
-    text-align: left;
-    width: fit-content;
+#mainBanner h2, #mainBanner h3 {
+    margin: 0.25rem 0;
 }
+
+#mainBanner .btnContainer {
+    display: flex;
+    gap: 1rem;
+}
+
+
+#mainBanner .secondaryCTA {
+    background-color: transparent;
+}
+
+#mainBanner .secondaryCTA:hover {
+    background-color: rgba(255,255,255,0.07);
+}
+
+/* Main: About */
+
+#about .flexContainer {
+    display: flex;
+    align-items: stretch;
+    gap: 2rem;
+}
+
+#about .flexImage {
+    background-image: url("../images/聞海－青海高原花土溝拍攝《原油》.jpg");
+    background-position: 75% top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-shrink: 0;
+    flex-basis: 550px;
+    /* margin: 1rem 0 0.5rem; */
+}
+
+@media (max-width: 1280px) {
+    #about .flexContainer {
+        flex-direction: column-reverse;
+    }
+
+}
+
+/* Main: Films */
+
 
 /* Footer */
 
