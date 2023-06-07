@@ -17,9 +17,21 @@ body {
     font-size: 1.75rem;
     font-weight: 300;
 }
+
+@media screen and (width < 1280px) {
+    body {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (width < 640px) {
+    body {
+        font-size: 1rem;
+    }
+}
    
 a {
-    color: #ccc;
+    color: #ddd;
 }
 
 a:hover {
@@ -29,11 +41,11 @@ a:hover {
 a:active {
     color: #fff;
 }
-  
+
 button, input, select {
     background-color: #333;
     border-color: #fff;
-    border-radius: 1.75rem;
+    border-radius: 1.875rem;
     border-style: solid;
     border-width: 2px;
     color: #fff;
@@ -41,9 +53,25 @@ button, input, select {
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
-    height: 3.25rem;
+    height: 3.75rem;
     margin: 0.5rem 0;
-    padding: 0 1rem;
+    padding: 0 1.2rem 0.175rem;
+}
+
+@media screen and (width < 1280px) {
+    button, input, select {
+        border-radius: 1.625rem;
+        height: 3.25rem;
+        padding: 0 0.9rem 0.175rem;
+    }
+}
+
+@media screen and (width < 640px) {
+    button, input, select {
+        border-radius: 1.375rem;
+        height: 2.75rem;
+        padding: 0 0.9rem 0.175rem;
+    }
 }
 
 button:hover, input:hover, select:hover {
@@ -55,24 +83,9 @@ button:active,input:active, select:active {
 }
 
 hr {
-    color: #ccc;
+    color: #ddd;
     margin: 0 12.5%;
 }
-
-
-/* Global: Resposive */
-/* 
-@media (max-width: 1280px) {
-    body {
-        font-size: 4.5vw;
-    }
-
-    button, input, select {
-        border-radius: 4.5vw;
-        height: 9vw;
-        padding: 0 3vw;
-    }
-} */
 
 /* Header & Navigation */
 
@@ -84,8 +97,10 @@ nav {
 }
 
 nav.dropdown {
-    flex-direction: column;
-    align-items: flex-start;
+    /* flex-direction: column;
+    align-items: flex-start; */
+    display: block;
+    position: relative;
 }
 
 #navTitle {
@@ -95,7 +110,7 @@ nav.dropdown {
     width: 100%;
 }
 
-@media (min-width: 1280px) {
+@media screen and (width >= 1280px) {
     #navTitle {
         width: auto;
     }
@@ -111,18 +126,32 @@ nav.dropdown {
     margin: 0.5rem 0 0;
 }
 
-@media (min-width: 1280px) {
+@media screen and (width >= 1280px) {
     #navBtn {
         display: none;
     }
 }
 
+@media screen and (width < 640px) {
+    #navBtn {
+        margin: 0.2rem 0 0;
+    }
+}
+
 #navBtn * {
-    width: 3rem;
+    width: 2.5rem;
     height: 0.25rem;
-    background-color: #ccc;
-    margin: 0.75rem 0;
+    background-color: #ddd;
+    margin: 0.6rem 0;
     transition: 0.5s;
+}
+
+@media screen and (width < 640px) {
+    #navBtn * {
+        width: 1.5rem;
+        height: 0.15rem;
+        margin: 0.4rem 0;
+    }
 }
 
 #navBtn:hover *, #navBtn:focus * {
@@ -133,9 +162,14 @@ nav.dropdown {
     background-color: #f7d089;
 }
 
-
 .dropdown #bar1 {
-    transform: translate(0, 1rem) rotate(45deg);
+    transform: translate(0, 0.85rem) rotate(45deg);
+}
+
+@media screen and (width < 640px) {
+    .dropdown #bar1 {
+        transform: translate(0, 0.565rem) rotate(45deg);
+    }
 }
 
 .dropdown #bar2 {
@@ -143,9 +177,14 @@ nav.dropdown {
 }
 
 .dropdown #bar3 {
-    transform: translate(0, -1rem) rotate(-45deg);
+    transform: translate(0, -0.85rem) rotate(-45deg);
 }
 
+@media screen and (width < 640px) {
+    .dropdown #bar3 {
+        transform: translate(0, -0.565rem) rotate(-45deg);
+    }
+}
 
 #navItems {
     display: flex;
@@ -153,7 +192,7 @@ nav.dropdown {
     transform: 0.5s;
 }
 
-@media (max-width: 1280px) {
+@media screen and (width < 1280px) {
     nav:not(.dropdown) #navItems {
         display: none;
     }
@@ -171,9 +210,11 @@ nav.dropdown {
 }
 
 .dropdown #navItems {
+    display: flex;
     background-color: #111;
     flex-direction: column;
-    padding: 0 0 2rem;
+    padding: 2rem;
+    position: absolute;
     width: 100%;
 }
 
@@ -181,6 +222,10 @@ nav.dropdown {
 
 h2 {
     color: #f7d089;
+}
+
+h3 {
+    color: #ddd;
 }
 
 section:not(#mainBanner) {
@@ -203,7 +248,7 @@ section:not(#mainBanner) .btnContainer {
     width: 100%;
     height: 60vh;
     background:
-        linear-gradient(.25turn, #111, rgba(0,0,0,0)) center / 100% 100%,
+        linear-gradient(.25turn, rgba(0,0,0,0.8), rgba(0,0,0,0.3)) center / 100% 100%,
         url("../images/沒有電影的電影節－劇照01.jpg") no-repeat center/ cover;
 }
 
@@ -228,13 +273,16 @@ section:not(#mainBanner) .btnContainer {
     gap: 1rem;
 }
 
+/* #mainBanner .primaryCTA {
+    background-color: hsla(39, 87%, 50%, 0.3);
+} */
 
 #mainBanner .secondaryCTA {
     background-color: transparent;
 }
 
 #mainBanner .secondaryCTA:hover {
-    background-color: rgba(255,255,255,0.07);
+    background-color: rgba(255,255,255,0.1);
 }
 
 /* Main: About */
@@ -255,15 +303,101 @@ section:not(#mainBanner) .btnContainer {
     /* margin: 1rem 0 0.5rem; */
 }
 
-@media (max-width: 1280px) {
+@media screen and (width < 1280px) {
     #about .flexContainer {
         flex-direction: column-reverse;
     }
+}
 
+@media screen and (width < 640px) {
+    #about .flexImage {
+        flex-basis: 300px;
+    }
 }
 
 /* Main: Films */
 
+#filmGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+@media screen and (width < 1280px) {
+    #filmGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (width < 640px) {
+    #filmGrid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+#filmGrid .gridItem {
+    align-items: center;
+    height: 20rem;
+    position: relative;
+}
+
+
+
+#filmGrid > :nth-child(1) {
+    background: url("../images/尋找林昭的靈魂－劇照01.jpg")
+        no-repeat center / cover;
+}
+
+#filmGrid > :nth-child(2) {
+    background: url(../images/喧囂的塵土－劇照01.jpg)
+        no-repeat center / cover;
+}
+
+#filmGrid > :nth-child(3) {
+    background: url(../images/一個說不－劇照03.jpg)
+        no-repeat center / cover;
+}
+
+#filmGrid > :nth-child(4) {
+    background: url(../images/我們－劇照01.png)
+        no-repeat center / cover;
+}
+
+#filmGrid > :nth-child(5) {
+    background: url(../images/赫索格的日子－劇照01.png)
+        no-repeat center / cover;
+}
+
+#filmGrid > :nth-child(6) {
+    background: url(../images/表現主義.jpg)
+        no-repeat center /cover;
+}
+
+#filmGrid .gridItem .textContainer {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 5rem inset black;
+    cursor: pointer;
+}
+
+#filmGrid .gridItem .textContainer h3 {
+    display: none;
+    text-align: center;
+    width: 100%;
+}
+
+#filmGrid .gridItem:hover .textContainer {
+    background-color: rgba(0,0,0,0.75);
+}
+
+#filmGrid .gridItem:hover .textContainer h3 {
+    display: block;
+}
 
 /* Footer */
 
