@@ -121,24 +121,24 @@ nav.dropdown {
     text-decoration: none;
 }
 
-#navBtn {
+#navMenuButton {
     cursor: pointer;
     margin: 0.5rem 0 0;
 }
 
 @media screen and (width >= 1280px) {
-    #navBtn {
+    #navMenuButton {
         display: none;
     }
 }
 
 @media screen and (width < 640px) {
-    #navBtn {
+    #navMenuButton {
         margin: 0.2rem 0 0;
     }
 }
 
-#navBtn * {
+#navMenuButton * {
     width: 2.5rem;
     height: 0.25rem;
     background-color: #ddd;
@@ -147,18 +147,18 @@ nav.dropdown {
 }
 
 @media screen and (width < 640px) {
-    #navBtn * {
+    #navMenuButton * {
         width: 1.5rem;
         height: 0.15rem;
         margin: 0.4rem 0;
     }
 }
 
-#navBtn:hover *, #navBtn:focus * {
+#navMenuButton:hover *, #navMenuButton:focus * {
     background-color: #fff;
 }
 
-#navBtn:active * {
+#navMenuButton:active * {
     background-color: #f7d089;
 }
 
@@ -186,30 +186,30 @@ nav.dropdown {
     }
 }
 
-#navItems {
+#navMenu {
     display: flex;
     gap: 2rem;
     transform: 0.5s;
 }
 
 @media screen and (width < 1280px) {
-    nav:not(.dropdown) #navItems {
+    nav:not(.dropdown) #navMenu {
         display: none;
     }
 }
 
-#navItems a {
+#navMenu a {
     font-weight: 500;
     text-decoration: none;
 }
 
-#navItems a:hover {
+#navMenu a:hover {
     text-decoration: underline;
     text-decoration-thickness: 0.25rem;
     text-underline-offset: 0.5rem;
 }
 
-.dropdown #navItems {
+.dropdown #navMenu {
     display: flex;
     background-color: #111;
     flex-direction: column;
@@ -236,7 +236,7 @@ section:not(#mainBanner) h2 {
     text-align: center;
 }
 
-section:not(#mainBanner) .btnContainer {
+section:not(#mainBanner) .buttonContainer {
     text-align: center;
     margin: 1rem 0;
 }
@@ -268,7 +268,7 @@ section:not(#mainBanner) .btnContainer {
     margin: 0.25rem 0;
 }
 
-#mainBanner .btnContainer {
+#mainBanner .buttonContainer {
     display: flex;
     gap: 1rem;
 }
@@ -374,7 +374,7 @@ section:not(#mainBanner) .btnContainer {
 }
 
 #filmGrid > :nth-child(5) {
-    background: url(../images/赫索格的日子－劇照01.png)
+    background: url(../images/表現主義.jpg)
         no-repeat center / cover;
 }
 
@@ -419,6 +419,10 @@ section:not(#mainBanner) .btnContainer {
     #filmGrid .gridItem .textContainer h3 {
         display: block;
     }
+}
+
+#filmGrid .gridItem .textContainer p {
+    display: none;
 }
 
 /* Footer */
