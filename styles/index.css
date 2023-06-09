@@ -341,7 +341,17 @@ section:not(#mainBanner) .btnContainer {
     position: relative;
 }
 
+@media screen and (width < 1280px) {
+    #filmGrid .gridItem {
+        height: 17.5rem;
+    }
+}
 
+@media screen and (width < 640px) {
+    #filmGrid .gridItem {
+        height: 15rem;
+    }
+}
 
 #filmGrid > :nth-child(1) {
     background: url("../images/尋找林昭的靈魂－劇照01.jpg")
@@ -392,11 +402,23 @@ section:not(#mainBanner) .btnContainer {
 }
 
 #filmGrid .gridItem:hover .textContainer {
-    background-color: rgba(0,0,0,0.75);
+    background-color: rgba(0,0,0,0.5);
+}
+
+@media screen and (width < 1280px) {
+    #filmGrid .gridItem .textContainer {
+        background-color: rgba(0,0,0,0.35);
+    }
 }
 
 #filmGrid .gridItem:hover .textContainer h3 {
     display: block;
+}
+
+@media screen and (width < 1280px) {
+    #filmGrid .gridItem .textContainer h3 {
+        display: block;
+    }
 }
 
 /* Footer */
