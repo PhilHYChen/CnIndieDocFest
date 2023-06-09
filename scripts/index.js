@@ -34,3 +34,17 @@
     document.getElementById("navMenuButton").addEventListener("click", () => {
         document.querySelector("nav").classList.toggle("dropdown");
     });
+
+
+// Nav Menu Auto-Collapse
+    // Only functions when a child item is clicked upon,
+    //  inside a viewport smalle than 1280px.
+    document.querySelectorAll("#navMenu *").forEach(element => {
+        element.addEventListener("click", () => {
+            if (window.innerWidth < 1280) {
+                setTimeout(() => {
+                    document.querySelector("nav").classList.toggle("dropdown");
+                }, 200);
+            };
+       })
+    });
