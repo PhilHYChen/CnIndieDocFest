@@ -23,22 +23,23 @@
     // Unit Test:
     // alert(document.querySelector("nav").offsetHeight + "px");
     
-// Nav Menu Scroll-to-Element
+// Nav Menu: Scroll-to-Element
     function scrollToElement(id) {
         document.getElementById(id).scrollIntoView(
             {behavior: "smooth", block: "start", inline: "nearest"}
         );
     };
 
-// Nav Menu Button
+// Nav Menu: Button
     document.getElementById("navMenuButton").addEventListener("click", () => {
         document.querySelector("nav").classList.toggle("dropdown");
     });
 
 
-// Nav Menu Auto-Collapse
-    // Only functions when a child item is clicked upon,
-    //  inside a viewport smalle than 1280px.
+// Nav Menu: Auto-Collapse
+    // Only functions when 
+    // 1. a child item is clicked upon, and
+    // 2. inside a viewport smaller than 1280px.
     document.querySelectorAll("#navMenu *").forEach(element => {
         element.addEventListener("click", () => {
             if (window.innerWidth < 1280) {
@@ -48,3 +49,39 @@
             };
        })
     });
+
+// Film Info Overlay: Open (via clicking on filmGrid child items)
+function openOverlay(childOrder) {
+    document.getElementById("filmInfoOverlay").style.display = "block";
+    let selector = `#filmInfoOverlay > :nth-child(${childOrder})`;
+    document.querySelector(selector).style.display = "block";
+    // To prevent scrolling in the normal document flow:
+    document.querySelector("body").style.overflow = "hidden";
+}
+
+// Film Info Overlay: Close Button
+function closeOverlay() {
+    document.getElementById("filmInfoOverlay").style.display = "none";
+    document.querySelectorAll("#filmInfoOverlay > *").forEach(element => {
+        element.style.display = "none";
+    })
+    // Resume scrolling in the normal document flow:
+    document.querySelector("body").style.overflow = "auto";
+    // Reset filmItem textContainer scroll progress: 
+    document.querySelectorAll("#filmInfoOverlay .filmItem .textContainer").forEach(element => {
+        element.scrollTop = 0;
+    })
+
+}
+
+// Film Info Overlay: Item Image Slider
+let slideIndex = 1;
+
+function rotateSlide(n) {
+    showSlide(slideIndex += n);
+}
+
+function showSlide(n) {
+    
+}
+// Film Info Overlay: Item Image Slide Selector

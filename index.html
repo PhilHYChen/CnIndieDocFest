@@ -21,10 +21,14 @@
                     </div>
                 </div>
                 <div id="navMenu" class="flexContainer">
-                    <a href="#about" onclick="scrollToElement('about')">策展人</a>
-                    <a href="#films" onclick="scrollToElement('films')">放映片</a>
-                    <a href="" onclick="scrollToElement('')">報名場次</a>
-                    <a href="" onclick="scrollToElement('')">線上觀影</a>
+                    <a href="#about" onclick="scrollToElement('about'); closeOverlay();">
+                        策展人
+                    </a>
+                    <a href="#films" onclick="scrollToElement('films'); closeOverlay();">
+                        放映片
+                    </a>
+                    <a href="" onclick="scrollToElement(''); closeOverlay();">報名場次</a>
+                    <a href="" onclick="scrollToElement(''); closeOverlay();">線上觀影</a>
                 </div>
             </nav>
             <div id="scrollProgressIndicator">
@@ -52,6 +56,7 @@
                     </div>
                 </div>
             </section>
+            <!-- 策展人 -->
             <section id="about">
                 <h2>策展人</h2>
                 <h3>聞海（黃文海）</h3>
@@ -67,21 +72,20 @@
                             多次獲得國際電影節獎勵，如第 16 屆馬賽國際電影節「喬治斯·德·博勒加德」獎；第 28 屆法國真實電影節最高獎；第 65 屆威尼斯電影節「地平線單元」評委會特別獎。
                         </p>
                     </div>
-                    <div class="flexImage">
-
-                    </div>
-                    <!-- <img src="images/聞海－中央社1152x768_20190902000092.jpg"> -->
+                    <div class="flexImage"></div>
                 </div>
                 <div class="buttonContainer">
                     <button>深入介紹</button>
                 </div>
             </section>
             <hr>
+            <!-- 放映片 -->
             <section id="films">
                 <h2>放映片</h2>
+                <!-- Film Grid -->
                 <div id="filmGrid" class="gridContainer">
                     <div class="gridItem">
-                        <div class="textContainer">
+                        <div class="textContainer" onclick="openOverlay(1)">
                             <h3>
                                 尋找林昭的靈魂
                                 <br>
@@ -90,7 +94,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer">
+                        <div class="textContainer" onclick="openOverlay(2)">
                             <h3>
                                 喧嘩的塵土
                                 <br>
@@ -99,7 +103,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer">
+                        <div class="textContainer" onclick="openOverlay(3)">
                             <h3>
                                 一個說不
                                 <br>
@@ -108,7 +112,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer">
+                        <div class="textContainer" onclick="openOverlay(4)">
                             <h3>
                                 我們
                                 <br>
@@ -117,7 +121,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer">
+                        <div class="textContainer" onclick="openOverlay(5)">
                             <h3>
                                 表現主義
                                 <br>
@@ -126,7 +130,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer">
+                        <div class="textContainer" onclick="openOverlay(6)">
                             <h3>
                                 喊叫與耳語
                                 <br>
@@ -135,8 +139,17 @@
                         </div>
                     </div>
                 </div>
-                <div id="filmInfo">
-                    <div class="gridItem">
+                <!-- Film Info Overlay -->
+                <div id="filmInfoOverlay">
+                    <div class="filmItem">
+                        <div class="headerSpace"></div>
+                        <div class="mediaContainer">
+                            <img src="images/尋找林昭的靈魂－劇照01.jpg">
+                            <div class="slideRotator">
+                                <a class="prevButton" onclick="rotateSlide(-1)">&#10094;</a>
+                                <a class="nextButton" onclick="rotateSlide(1)">&#10095;</a>
+                            </div>
+                        </div>
                         <div class="textContainer">
                             <h3>
                                 尋找林昭的靈魂
@@ -156,8 +169,19 @@
                                 本片從點滴傳聞、個別記錄開始尋找線索，重現四十年前林昭生命與思想軌跡。知情人中，有的心有餘悸拒絕採訪，有的視死如歸揭露真相，共計八十多人講述了和林昭相關的故事。
                             </p>
                         </div>
+                        <div class="buttonContainer">
+                            <span class="closeButton" onclick="closeOverlay()"></span>
+                        </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="filmItem">
+                        <div class="headerSpace"></div>
+                        <div class="mediaContainer">
+                            <img src="images/尋找林昭的靈魂－劇照01.jpg">
+                            <div class="slideRotator">
+                                <a class="prevButton" onclick="rotateSlide(-1)">&#10094;</a>
+                                <a class="nextButton" onclick="rotateSlide(1)">&#10095;</a>
+                            </div>
+                        </div>
                         <div class="textContainer">
                             <h3>
                                 喧嘩的塵土
@@ -174,8 +198,19 @@
                                 這是一個紛亂無稽的底層世界，生存的悖論主宰著人們的生活，真實卻荒謬。
                             </p>
                         </div>
+                        <div class="buttonContainer">
+                            <span class="closeButton" onclick="closeOverlay()"></span>
+                        </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="filmItem">
+                        <div class="headerSpace"></div>
+                        <div class="mediaContainer">
+                            <img src="images/尋找林昭的靈魂－劇照01.jpg">
+                            <div class="slideRotator">
+                                <a class="prevButton" onclick="rotateSlide(-1)">&#10094;</a>
+                                <a class="nextButton" onclick="rotateSlide(1)">&#10095;</a>
+                            </div>
+                        </div>
                         <div class="textContainer">
                             <h3>
                                 一個說不
@@ -198,14 +233,25 @@
                                 長期斷水斷電，一家的生活陷入了更大的困境。阿中還是決定讓老婆帶著孩子搬走，只留下他一個人堅守。阿中的 7 歲兒子在一間屋子裡找到了一部老相機，他開始每天給這個房子拍張照片，留住他的記憶。
                             </p>
                         </div>
+                        <div class="buttonContainer">
+                            <span class="closeButton" onclick="closeOverlay()"></span>
+                        </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="filmItem">
+                        <div class="headerSpace"></div>
+                        <div class="mediaContainer">
+                            <img src="images/尋找林昭的靈魂－劇照01.jpg">
+                            <div class="slideRotator">
+                                <a class="prevButton" onclick="rotateSlide(-1)">&#10094;</a>
+                                <a class="nextButton" onclick="rotateSlide(1)">&#10095;</a>
+                            </div>
+                        </div>
                         <div class="textContainer">
                             <h3>
                                 我們
                                 <br>
                                 <small>聞海，2008</small>
-                            </h3>
+                            </h3>                        
                             <p>
                                 「有人說他們是敏感人物，他們說自己是政治動物。」
                             </p>
@@ -219,15 +265,26 @@
                                 本片描述當下中國知識分子的思考和寫作，但他們的行動也僅止於思考和寫作。導演關注了他們在這個過程中的焦灼狀態。
                             </p>
                         </div>
+                        <div class="buttonContainer">
+                            <span class="closeButton" onclick="closeOverlay()"></span>
+                        </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="filmItem">
+                        <div class="headerSpace"></div>
+                        <div class="mediaContainer">
+                            <img src="images/尋找林昭的靈魂－劇照01.jpg">
+                            <div class="slideRotator">
+                                <a class="prevButton" onclick="rotateSlide(-1)">&#10094;</a>
+                                <a class="nextButton" onclick="rotateSlide(1)">&#10095;</a>
+                            </div>
+                        </div>
                         <div class="textContainer">
                             <h3>
                                 表現主義
                                 <br>
                                 <small>徐若濤，2017</small>
                             </h3>
-                            <p>
+                                    <p>
                                 2012 年 6 月 4 日，藝術家華涌在天安門廣場，用鮮血在額寫上「六四」二字，被公安強行帶走。他激進的行為藝術也曾招來牢獄之災。
                             </p>
                             <p>
@@ -237,8 +294,19 @@
                                 這是一部關於「勇氣」的電影。讓兩位截然相反的表現主義藝術家「扭打」在了一起：一個自閉癲狂，一個用勇氣與行動在路上探索自我，後者的行動與勇氣幾乎鼓舞到了所有在自省中勇氣匱乏的人們，同時也帶著導演在自身關係中的反省。
                             </p>
                         </div>
+                        <div class="buttonContainer">
+                            <span class="closeButton" onclick="closeOverlay()"></span>
+                        </div>
                     </div>
-                    <div class="gridItem">
+                    <div class="filmItem">
+                        <div class="headerSpace"></div>
+                        <div class="mediaContainer">
+                            <img src="images/尋找林昭的靈魂－劇照01.jpg">
+                            <div class="slideRotator">
+                                <a class="prevButton" onclick="rotateSlide(-1)">&#10094;</a>
+                                <a class="nextButton" onclick="rotateSlide(1)">&#10095;</a>
+                            </div>
+                        </div>
                         <div class="textContainer">
                             <h3>
                                 喊叫與耳語
@@ -266,6 +334,9 @@
                             <p>
                                 愛爾蘭的視覺藝術家 Trish McAdam 製作了影片中的動畫，她將中國女工的經歷和英國工業革命聯繫起來，增加了在中國的世界工廠辦公室對員工的監控錄像，還反映了富士康工廠的連環自殺事件，這些都強調了暴力留在女性的創傷。
                             </p>
+                        </div>
+                        <div class="buttonContainer">
+                            <span class="closeButton" onclick="closeOverlay()"></span>
                         </div>
                     </div>
                 </div>
