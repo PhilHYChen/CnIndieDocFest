@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     </head>
     <body>
+        <!-- 標題列 -->
         <header>
             <nav class="flexContainer">
                 <div id="navTitle" class="flexContainer">
@@ -21,20 +22,21 @@
                     </div>
                 </div>
                 <div id="navMenu" class="flexContainer">
-                    <a href="#about" onclick="scrollToElement('about'); closeOverlay();">
+                    <a href="#curator" onclick="scrollToElement('curator'); closeFilmInfoOverlay();">
                         策展人
                     </a>
-                    <a href="#films" onclick="scrollToElement('films'); closeOverlay();">
+                    <a href="#films" onclick="scrollToElement('films'); closeFilmInfoOverlay();">
                         放映片
                     </a>
-                    <a href="" onclick="scrollToElement(''); closeOverlay();">報名場次</a>
-                    <a href="" onclick="scrollToElement(''); closeOverlay();">線上觀影</a>
+                    <a href="" onclick="scrollToElement(''); closeFilmInfoOverlay();">報名場次</a>
+                    <a href="" onclick="scrollToElement(''); closeFilmInfoOverlay();">線上觀影</a>
                 </div>
             </nav>
             <div id="scrollProgressIndicator">
                 <div id="scrollProgressBar"></div>
             </div>
         </header>
+        <!-- 主要內容 -->
         <main>
             <section id="mainBanner">
                 <div class="container">
@@ -57,7 +59,7 @@
                 </div>
             </section>
             <!-- 策展人 -->
-            <section id="about">
+            <section id="curator">
                 <h2>策展人</h2>
                 <h3>聞海（黃文海）</h3>
                 <div class="flexContainer">
@@ -74,8 +76,22 @@
                     </div>
                     <div class="flexImage"></div>
                 </div>
-                <div class="buttonContainer">
+                <div class="buttonContainer" onclick="openCuratorInfoOverlay()">
                     <button>深入介紹</button>
+                </div>
+                <!-- Curator Info Overlay -->
+                <div id="curatorInfoOverlay">
+                    <div class="headerSpace"></div>
+                    <div class="iframeContainer">
+                        <iframe 
+                            height="100%" width="100%"
+                            src="https://www.youtube-nocookie.com/embed/4ROpFlxZAdo?rel=0"
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="buttonContainer">
+                        <span class="closeButton" onclick="closeCuratorInfoOverlay()"></span>
+                    </div>
                 </div>
             </section>
             <hr>
@@ -85,7 +101,16 @@
                 <!-- Film Grid -->
                 <div id="filmGrid" class="gridContainer">
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openOverlay(1)">
+                        <div class="textContainer" onclick="openFilmInfoOverlay(1)">
+                            <h3>
+                                凶年之畔
+                                <br>
+                                <small>聞海，2017</small>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="gridItem">
+                        <div class="textContainer" onclick="openFilmInfoOverlay(2)">
                             <h3>
                                 尋找林昭的靈魂
                                 <br>
@@ -94,7 +119,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openOverlay(2)">
+                        <div class="textContainer" onclick="openFilmInfoOverlay(3)">
                             <h3>
                                 喧嘩的塵土
                                 <br>
@@ -103,16 +128,16 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openOverlay(3)">
+                        <div class="textContainer" onclick="openFilmInfoOverlay(4)">
                             <h3>
                                 一個說不
                                 <br>
-                                <small>趙大勇，2005</small>
+                                <small>趙大勇，2018</small>
                             </h3>
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openOverlay(4)">
+                        <div class="textContainer" onclick="openFilmInfoOverlay(5)">
                             <h3>
                                 我們
                                 <br>
@@ -121,7 +146,25 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openOverlay(5)">
+                        <div class="textContainer" onclick="openFilmInfoOverlay(6)">
+                            <h3>
+                                赫索格的日子
+                                <br>
+                                <small>何楊，2010</small>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="gridItem">
+                        <div class="textContainer" onclick="openFilmInfoOverlay(7)">
+                            <h3>
+                                沒有電影的電影節
+                                <br>
+                                <small>王我，2015</small>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="gridItem">
+                        <div class="textContainer" onclick="openFilmInfoOverlay(8)">
                             <h3>
                                 表現主義
                                 <br>
@@ -130,7 +173,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openOverlay(6)">
+                        <div class="textContainer" onclick="openFilmInfoOverlay(9)">
                             <h3>
                                 喊叫與耳語
                                 <br>
@@ -139,22 +182,66 @@
                         </div>
                     </div>
                 </div>
+                <div id="showAllFilms" class="buttonContainer">
+                    <button onclick="showAllFilms()">顯示所有放映片</button>
+                </div>
                 <!-- Film Info Overlay -->
                 <div id="filmInfoOverlay">
+                    <!-- #1 -->
                     <div class="filmItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
+                            <iframe
+                                height="100%" width="100%" 
+                                src="https://www.youtube-nocookie.com/embed/H9D3oH8izys?rel=0"
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                            </iframe>
+                            <img src="images/凶年之畔－劇照01.png">
+                            <img src="images/凶年之畔－劇照02.jpg">
+                            <img src="images/凶年之畔－劇照03.jpg">
+                            <img src="images/凶年之畔－海報.jpg">
+                            <a class="prevButton" onclick="rotateSlide(1, -1)">&#10094;</a>
+                            <a class="nextButton" onclick="rotateSlide(1, 1)">&#10095;</a>
+                        </div>
+                        <div class="textContainer">
+                            <h3>
+                                凶年之畔
+                                <br>
+                                <small>聞海，2017，174 分鐘</small>
+                            </h3>
+                            <p>
+                                中國，三十多年來權貴資本主義飛速發展。兩代幾億工人的血汗，鑄就了「中國奇跡」。
+                            </p>
+                            <p>
+                                在這座「世界工廠」裡，有人在工傷後爭取到賠償，有人因組織罷工遭判刑，有人代表工人與僱主談判而被解僱，有人為工人提供法律諮詢而幾乎被剝奪律師執業資格。這群來自不同省份、跨越兩代的工人在抗爭行動中改變了自身的命運。
+                            </p>
+                            <p>
+                                本片可視為聞海前作《我們》的延續。 在《我們》中，知識分子被迫害、被監禁、被警方侵擾、寫的書被查禁，彷彿生活在這個國家的「地下室」內，思考和寫作就是行動，而行動也僅僅止於思考和寫作。在《凶年之畔》中，則記錄了更底層的「農民工」（這具有歧視性的稱呼）中的「行動者」。
+                            </p>
+                        </div>
+                        <div class="buttonContainer">
+                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
+                        </div>
+                    </div>
+                    <!-- #2 -->
+                    <div class="filmItem">
+                        <div class="headerSpace"></div>
+                        <div class="mediaContainer">
+                            <iframe
+                                height="100%" width="100%" 
+                                src="https://www.youtube-nocookie.com/embed/DwkDeisygcM?rel=0"
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                            </iframe>
                             <img src="images/尋找林昭的靈魂－劇照01.jpg">
-                            <div class="slideRotator">
-                                <a class="prevButton" onclick="rotateSlide(-1)">&#10094;</a>
-                                <a class="nextButton" onclick="rotateSlide(1)">&#10095;</a>
-                            </div>
+                            <img src="images/尋找林昭的靈魂－海報.jpg">
+                            <a class="prevButton" onclick="rotateSlide(2, -1)">&#10094;</a>
+                            <a class="nextButton" onclick="rotateSlide(2, 1)">&#10095;</a>
                         </div>
                         <div class="textContainer">
                             <h3>
                                 尋找林昭的靈魂
                                 <br>
-                                <small>胡傑，2005</small>
+                                <small>胡傑，2005，115 分鐘</small>
                             </h3>
                             <p>
                                 1957 年，毛澤東發起反右運動，以前所未有的規模和策略鎮壓民主訴求、迫害知識分子。超過 55 萬的知識分子被打成右派，發配集中營勞改。媒體上充滿謊言，知識人噤若寒蟬。
@@ -170,23 +257,30 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeOverlay()"></span>
+                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
                         </div>
-                    </div>
+                    </div>                    
+                    <!-- #3 -->
                     <div class="filmItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
-                            <img src="images/尋找林昭的靈魂－劇照01.jpg">
-                            <div class="slideRotator">
-                                <a class="prevButton" onclick="rotateSlide(-1)">&#10094;</a>
-                                <a class="nextButton" onclick="rotateSlide(1)">&#10095;</a>
-                            </div>
+                            <iframe
+                                height="100%" width="100%" 
+                                src="https://www.youtube-nocookie.com/embed/-bRFWp_P6To?rel=0"
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                            </iframe>
+                            <img src="images/喧囂的塵土－劇照01.jpg">
+                            <img src="images/喧嘩的塵土－劇照87.jpg">
+                            <img src="images/喧嘩的塵土－劇照93.jpg">
+                            <img src="images/喧嘩的塵土－海報.jpg">
+                            <a class="prevButton" onclick="rotateSlide(3, -1)">&#10094;</a>
+                            <a class="nextButton" onclick="rotateSlide(3, 1)">&#10095;</a>
                         </div>
                         <div class="textContainer">
                             <h3>
                                 喧嘩的塵土
                                 <br>
-                                <small>聞海，2004</small>
+                                <small>聞海，2004，111 分鐘</small>
                             </h3>
                             <p>
                                 2003 年 SARS 疫病前後，在湖南一座叫耀揚的小城里生存著這樣一些人。
@@ -197,25 +291,34 @@
                             <p>
                                 這是一個紛亂無稽的底層世界，生存的悖論主宰著人們的生活，真實卻荒謬。
                             </p>
+                            <p>
+                                非典襲來，宏偉一家最終關了麻將館到鄉下送瘟神；王蓉無奈打掉孩子，獨自躲在黑暗的街角哭泣；阿紫和小丘在生意慘淡的焦慮中打鬧，卻演變成一場暴力；只有買六合彩的人們依舊狂熱，但發財的夢想一個接著一個破滅。一群年輕人在酒桌上談論著過去、未來、生命、金錢、機會、江湖和命運；十六歲的按摩女在昏暗中力不從心地擠捏著，兩具肉體在床上扭打、撕咬……
+                            </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeOverlay()"></span>
+                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
                         </div>
                     </div>
+                    <!-- #4 -->
                     <div class="filmItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
-                            <img src="images/尋找林昭的靈魂－劇照01.jpg">
-                            <div class="slideRotator">
-                                <a class="prevButton" onclick="rotateSlide(-1)">&#10094;</a>
-                                <a class="nextButton" onclick="rotateSlide(1)">&#10095;</a>
-                            </div>
+                            <iframe
+                                height="100%" width="100%" 
+                                src="https://www.youtube-nocookie.com/embed/nh9P5NULeHI?rel=0"
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                            </iframe>
+                            <img src="images/一個說不－劇照01.jpg">
+                            <img src="images/一個說不－劇照02.jpg">
+                            <img src="images/一個說不－劇照03.jpg">
+                            <a class="prevButton" onclick="rotateSlide(4, -1)">&#10094;</a>
+                            <a class="nextButton" onclick="rotateSlide(4, 1)">&#10095;</a>
                         </div>
                         <div class="textContainer">
                             <h3>
                                 一個說不
                                 <br>
-                                <small>趙大勇，2005</small>
+                                <small>趙大勇，2005，97 分鐘</small>
                             </h3>
                             <p>
                                 楊箕村，一座廣州市中心有百年歷史的村子，阿中的家就在其中。2009 年，政府以城中村改造為名，強迫全體村民搬遷。
@@ -234,23 +337,27 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeOverlay()"></span>
+                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
                         </div>
                     </div>
+                    <!-- #5 -->
                     <div class="filmItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
-                            <img src="images/尋找林昭的靈魂－劇照01.jpg">
-                            <div class="slideRotator">
-                                <a class="prevButton" onclick="rotateSlide(-1)">&#10094;</a>
-                                <a class="nextButton" onclick="rotateSlide(1)">&#10095;</a>
-                            </div>
+                            <iframe
+                                height="100%" width="100%" 
+                                src="https://www.youtube-nocookie.com/embed/B3clc3Zk-Kc?rel=0"
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                            </iframe>
+                            <img src="images/我們－劇照01.png">
+                            <a class="prevButton" onclick="rotateSlide(5, -1)">&#10094;</a>
+                            <a class="nextButton" onclick="rotateSlide(5, 1)">&#10095;</a>
                         </div>
                         <div class="textContainer">
                             <h3>
                                 我們
                                 <br>
-                                <small>聞海，2008</small>
+                                <small>聞海，2008，102 分鐘</small>
                             </h3>                        
                             <p>
                                 「有人說他們是敏感人物，他們說自己是政治動物。」
@@ -266,23 +373,89 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeOverlay()"></span>
+                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
                         </div>
                     </div>
+                    <!-- #6 -->
                     <div class="filmItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
-                            <img src="images/尋找林昭的靈魂－劇照01.jpg">
-                            <div class="slideRotator">
-                                <a class="prevButton" onclick="rotateSlide(-1)">&#10094;</a>
-                                <a class="nextButton" onclick="rotateSlide(1)">&#10095;</a>
-                            </div>
+                            <iframe
+                                height="100%" width="100%" 
+                                src="https://www.youtube-nocookie.com/embed/fZ4JaTJ36sw?rel=0"
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                            </iframe>
+                            <img src="images/赫索格的日子－劇照01.png">
+                            <a class="prevButton" onclick="rotateSlide(6, -1)">&#10094;</a>
+                            <a class="nextButton" onclick="rotateSlide(6, 1)">&#10095;</a>
+                        </div>
+                        <div class="textContainer">
+                            <h3>
+                                赫索格的日子
+                                <br>
+                                <small>何楊，2010，59 分鐘</small>
+                            </h3>                        
+                            <p>
+                                2010 年，中國一起稱為「三網友」案的言論自由案件，引起一場公民運動風暴。
+                            </p>
+                            <p>
+                                福建閩清發生了一起少女暴死案件，警方鑒定為自然死亡，而少女的母親則根據種種跡象，認為是輪姦致死。遊精佑、范燕瓊、吳華英為其寫文章、錄製視頻公佈於網絡。警方據此以誹謗罪叛處三人一至兩年徒刑。
+                            </p>
+                            <p>
+                                此事件激起了網民的極大憤慨，人們從全國各地趕到福州馬尾法院聲援，此事件成為現代中國公民運動的一個標誌性事件。
+                            </p>
+                        </div>
+                        <div class="buttonContainer">
+                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
+                        </div>
+                    </div>
+                    <!-- #7 -->
+                    <div class="filmItem">
+                        <div class="headerSpace"></div>
+                        <div class="mediaContainer">
+                            <iframe
+                                height="100%" width="100%" 
+                                src="https://www.youtube-nocookie.com/embed/ufbB1fyKCYM?rel=0"
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                            </iframe>
+                            <img src="images/沒有電影的電影節－劇照01.jpg">
+                            <a class="prevButton" onclick="rotateSlide(7, -1)">&#10094;</a>
+                            <a class="nextButton" onclick="rotateSlide(7, 1)">&#10095;</a>
+                        </div>
+                        <div class="textContainer">
+                            <h3>
+                                沒有電影的電影節
+                                <br>
+                                <small>王我，2015，79 分鐘</small>
+                            </h3>
+                            <p>
+                                2014 年 8 月 23 日，是中國影史上「最黑暗的一天」。
+                            </p>
+                            <p>
+                                當日上午， 中國最重要的獨立影展之一「北京獨立影像展」甫開幕，主辦的「栗憲庭電影基金」即遭到停水、停電，警察和一些身份不明的人將基金會包圍，將大門強行封堵，不允許任何人進出。隨後公安沒收影片，自稱村民的暴徒揮拳相向，創辦人栗憲庭與策展人王宏偉被短暫拘留。
+                            </p>
+                            <p>
+                                本片以大量手機、攝影機片段剪輯而成，紀錄從籌備、舉辦，到遭強行停展的荒謬歷程。本片所有影音素材由觀眾、本地藝術家、參展導演及嘉賓、影展志願者、工作人員、以及記者和媒體提供，是一部誕生於集體的創作。
+                            </p>
+                        </div>
+                        <div class="buttonContainer">
+                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
+                        </div>
+                    </div>
+                    <!-- #8 -->
+                    <div class="filmItem">
+                        <div class="headerSpace"></div>
+                        <div class="mediaContainer">
+                            <img src="images/表現主義－劇照01.jpg">
+                            <img src="images/表現主義－劇照02.jpg">
+                            <a class="prevButton" onclick="rotateSlide(8, -1)">&#10094;</a>
+                            <a class="nextButton" onclick="rotateSlide(8, 1)">&#10095;</a>
                         </div>
                         <div class="textContainer">
                             <h3>
                                 表現主義
                                 <br>
-                                <small>徐若濤，2017</small>
+                                <small>徐若濤，2017，90 分鐘</small>
                             </h3>
                                     <p>
                                 2012 年 6 月 4 日，藝術家華涌在天安門廣場，用鮮血在額寫上「六四」二字，被公安強行帶走。他激進的行為藝術也曾招來牢獄之災。
@@ -295,17 +468,22 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeOverlay()"></span>
+                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
                         </div>
                     </div>
+                    <!-- #9 -->
                     <div class="filmItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
-                            <img src="images/尋找林昭的靈魂－劇照01.jpg">
-                            <div class="slideRotator">
-                                <a class="prevButton" onclick="rotateSlide(-1)">&#10094;</a>
-                                <a class="nextButton" onclick="rotateSlide(1)">&#10095;</a>
-                            </div>
+                            <iframe
+                                height="100%" width="100%" 
+                                src="https://www.youtube-nocookie.com/embed/BRapuLHI6ok?rel=0"
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                            </iframe>
+                            <img src="images/喊叫與耳語－劇照01.png">
+                            <img src="images/喊叫與耳語－劇照02.png">
+                            <a class="prevButton" onclick="rotateSlide(9, -1)">&#10094;</a>
+                            <a class="nextButton" onclick="rotateSlide(9, 1)">&#10095;</a>
                         </div>
                         <div class="textContainer">
                             <h3>
@@ -336,12 +514,9 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeOverlay()"></span>
+                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
                         </div>
                     </div>
-                </div>
-                <div class="buttonContainer">
-                    <button>完整放映片單</button>
                 </div>
             </section>
             <hr>
@@ -352,9 +527,11 @@
                 
             </section>
         </main>
+        <!-- 附註列 -->
         <footer>
             2023｜練習試作 by PHYC
         </footer>
+        <!-- JavaScript -->
         <script src="scripts/index.js" defer></script>
     </body>
 </html>

@@ -102,6 +102,46 @@ hr {
     margin: 0 12.5%;
 }
 
+/* Global: Overlay */
+
+.buttonContainer .closeButton {
+    display: inline-block;
+    background-color: #333;
+    border: none;
+    border-radius: 50%;
+    color: #bbb;
+    cursor: pointer;
+    height: 2.5rem;
+    width: 2.5rem;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.buttonContainer .closeButton::before,
+.buttonContainer .closeButton::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    height: 0.25rem;
+    width: 65%;
+    background-color: #ccc;
+}
+
+.buttonContainer .closeButton::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.buttonContainer .closeButton::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+.buttonContainer .closeButton:hover::before,
+.buttonContainer .closeButton:hover::after {
+    background-color: #fff;
+}
+
 /* Header, Navigation & Scroll Progress Bar*/
 
 header.stickToTop {
@@ -323,13 +363,13 @@ section:not(#mainBanner) .buttonContainer {
 
 /* Main: About */
 
-#about .flexContainer {
+#curator .flexContainer {
     display: flex;
     align-items: stretch;
     gap: 2rem;
 }
 
-#about .flexImage {
+#curator .flexImage {
     background-image: url("../images/聞海－青海高原花土溝拍攝《原油》.jpg");
     background-position: 75% top;
     background-repeat: no-repeat;
@@ -339,19 +379,46 @@ section:not(#mainBanner) .buttonContainer {
 }
 
 @media screen and (width < 1280px) {
-    #about .flexContainer {
+    #curator .flexContainer {
         flex-direction: column-reverse;
     }
 }
 
 @media screen and (width < 640px) {
-    #about .flexImage {
+    #curator .flexImage {
         flex-basis: 300px;
     }
 }
 
+#curator #curatorInfoOverlay {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 1;
+}
+
+#curator #curatorInfoOverlay .headerSpace {
+    height: var(--header-height);
+}
+
+#curator #curatorInfoOverlay .iframeContainer {
+    height: calc(0.9 * (100% - var(--header-height)));
+    width: 100%;
+}
+
+#curator #curatorInfoOverlay .buttonContainer {
+    height: calc(0.1 * (100% - var(--header-height)));
+}
+
 /* Main: Films */
 
+    /* Film Grid */
 #filmGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -389,33 +456,69 @@ section:not(#mainBanner) .buttonContainer {
 }
 
 #filmGrid > :nth-child(1) {
-    background: url("../images/尋找林昭的靈魂－劇照01.jpg")
+    background: url(../images/凶年之畔－劇照01.png)
         no-repeat center / cover;
 }
 
 #filmGrid > :nth-child(2) {
-    background: url(../images/喧囂的塵土－劇照01.jpg)
+    background: url(../images/尋找林昭的靈魂－劇照01.jpg)
         no-repeat center / cover;
 }
 
 #filmGrid > :nth-child(3) {
-    background: url(../images/一個說不－劇照03.jpg)
+    background: url(../images/喧囂的塵土－劇照01.jpg)
         no-repeat center / cover;
 }
 
 #filmGrid > :nth-child(4) {
-    background: url(../images/我們－劇照01.png)
+    background: url(../images/一個說不－劇照03.jpg)
         no-repeat center / cover;
+    display: none;
+}
+
+@media screen and (width >= 640px) {
+    #filmGrid > :nth-child(4) {
+        display: block;
+    }
 }
 
 #filmGrid > :nth-child(5) {
-    background: url(../images/表現主義.jpg)
+    background: url(../images/我們－劇照01.png)
         no-repeat center / cover;
+    display: none;
 }
 
 #filmGrid > :nth-child(6) {
+    background: url(../images/赫索格的日子－劇照01.png)
+        no-repeat center /cover;
+    display: none;
+}
+
+@media screen and (width >= 1280px) {
+    #filmGrid > :nth-child(5) {
+        display: block;
+    }
+    #filmGrid > :nth-child(6) {
+        display: block;
+    }    
+}
+
+#filmGrid > :nth-child(7) {
+    background: url(../images/沒有電影的電影節－劇照01.jpg)
+        no-repeat center /cover;
+    display: none;
+}
+
+#filmGrid > :nth-child(8) {
+    background: url(../images/表現主義－劇照01.jpg)
+        no-repeat center /cover;
+    display: none;
+}
+
+#filmGrid > :nth-child(9) {
     background: url(../images/喊叫與耳語－劇照01.png)
         no-repeat center /cover;
+    display: none;
 }
 
 #filmGrid .gridItem .textContainer {
@@ -456,6 +559,8 @@ section:not(#mainBanner) .buttonContainer {
     }
 }
 
+    /* Film Info Overlay */
+
 #filmInfoOverlay {
     display: none;
     position: fixed;
@@ -482,83 +587,38 @@ section:not(#mainBanner) .buttonContainer {
 
 
 #filmInfoOverlay .filmItem .mediaContainer {
-    height: calc(0.7 * (100% - var(--header-height)));
+    height: calc(0.65 * (100% - var(--header-height)));
     width: 100%;
     position: relative;
 }
 
-#filmInfoOverlay .filmItem .mediaContainer iframe,
-#filmInfoOverlay .filmItem .mediaContainer img {
+#filmInfoOverlay .filmItem .mediaContainer iframe, img {
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
-#filmInfoOverlay .filmItem .mediaContainer .slideRotator {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+#filmInfoOverlay .filmItem .mediaContainer a {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-#filmInfoOverlay .filmItem .mediaContainer .slideRotator a {
+    top: 50%;
+    transform: translateY(-50%);
     background-color: rgba(0,0,0,0.75);
     cursor: pointer;
     padding: 1rem;
 }
 
+#filmInfoOverlay .filmItem .mediaContainer .nextButton {
+    right: 0;
+}
+
 #filmInfoOverlay .filmItem .textContainer {
-    height: calc(0.2 * (100% - var(--header-height)));
+    height: calc(0.25 * (100% - var(--header-height)));
     overflow: auto;
 }
 
 #filmInfoOverlay .filmItem .buttonContainer {
     height: calc(0.1 * (100% - var(--header-height)));
 }
-
-
-#filmInfoOverlay .filmItem .buttonContainer .closeButton {
-    display: inline-block;
-    background-color: #333;
-    border: none;
-    border-radius: 50%;
-    color: #bbb;
-    cursor: pointer;
-    height: 2.5rem;
-    width: 2.5rem;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
-
-#filmInfoOverlay .filmItem .buttonContainer .closeButton::before,
-#filmInfoOverlay .filmItem .buttonContainer .closeButton::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    height: 0.25rem;
-    width: 65%;
-    background-color: #ccc;
-}
-
-#filmInfoOverlay .filmItem .buttonContainer .closeButton::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-
-#filmInfoOverlay .filmItem .buttonContainer .closeButton::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-
-#filmInfoOverlay .filmItem .buttonContainer .closeButton:hover::before,
-#filmInfoOverlay .filmItem .buttonContainer .closeButton:hover::after {
-    background-color: #fff;
-}
-
 
 /* Footer */
 
