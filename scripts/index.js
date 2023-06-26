@@ -113,6 +113,10 @@ function closeFilmInfoOverlay() {
 let slideIndex = 1;
 
 function rotateSlide(childOrder, slideRotation) {
+    // Stop iframe video playback by reassigning src value:
+    document.querySelector(`#filmInfoOverlay > :nth-child(${childOrder}) iframe`).src = 
+        document.querySelector(`#filmInfoOverlay > :nth-child(${childOrder}) iframe`).src;
+    // Rotate Slides:
     showSlide(childOrder, slideIndex += slideRotation);
 }
 
@@ -130,8 +134,5 @@ function showSlide(childOrder, n) {
         currentSlides[i].style.display = "none";
     }
     currentSlides[slideIndex - 1].style.display = "block";
-    // Stop iframe video playback by reassigning src value:
-    document.querySelector(`#filmInfoOverlay > :nth-child(${childOrder}) iframe`).src = 
-        document.querySelector(`#filmInfoOverlay > :nth-child(${childOrder}) iframe`).src;
 }
 // Film Info Overlay: Item Image Slide Selector
