@@ -620,6 +620,97 @@ section:not(#mainBanner) .buttonContainer {
     height: calc(0.1 * (100% - var(--header-height)));
 }
 
+/* Main: Publication */
+
+#pubGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+@media screen and (width < 1280px) {
+    #pubGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (width < 640px) {
+    #pubGrid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+#pubGrid .gridItem {
+    align-items: center;
+    height: 30rem;
+    position: relative;
+}
+
+@media screen and (width < 1280px) {
+    #pubGrid .gridItem {
+        height: 17.5rem;
+    }
+}
+
+@media screen and (width < 640px) {
+    #pubGrid .gridItem {
+        height: 15rem;
+    }
+}
+
+#pubGrid > :nth-child(1) {
+    background: url(../images/出版－在地流放的影像.jpg)
+        no-repeat center / cover;
+}
+
+#pubGrid > :nth-child(2) {
+    background: url(../images/出版－存在的.jpg)
+        no-repeat center / cover;
+}
+
+#pubGrid > :nth-child(3) {
+    background: url(../images/出版－放逐的凝視.jpg)
+        no-repeat center / cover;
+}
+
+#pubGrid .gridItem .textContainer {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 5rem inset black;
+    cursor: pointer;
+}
+
+#pubGrid .gridItem .textContainer h3 {
+    display: none;
+    text-align: center;
+    width: 100%;
+}
+
+#pubGrid .gridItem:hover .textContainer {
+    background-color: rgba(0,0,0,0.5);
+}
+
+@media screen and (width < 1280px) {
+    #pubGrid .gridItem .textContainer {
+        background-color: rgba(0,0,0,0.35);
+    }
+}
+
+#pubGrid .gridItem:hover .textContainer h3 {
+    display: block;
+}
+
+@media screen and (width < 1280px) {
+    #pubGrid .gridItem .textContainer h3 {
+        display: block;
+    }
+}
+
 /* Footer */
 
 footer {

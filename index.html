@@ -28,8 +28,8 @@
                     <a href="#films" onclick="scrollToElement('films'); closeFilmInfoOverlay();">
                         放映片
                     </a>
-                    <a href="" onclick="scrollToElement(''); closeFilmInfoOverlay();">報名場次</a>
-                    <a href="" onclick="scrollToElement(''); closeFilmInfoOverlay();">線上觀影</a>
+                    <a href="#publication" onclick="scrollToElement('publication'); closeFilmInfoOverlay();">出版作品</a>
+                    <a href="" onclick="scrollToElement(''); closeFilmInfoOverlay();">報名活動</a>
                 </div>
             </nav>
             <div id="scrollProgressIndicator">
@@ -192,7 +192,8 @@
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
-                                height="100%" width="100%" 
+                                height="100%" width="100%"
+                                loading="lazy" 
                                 src="https://www.youtube-nocookie.com/embed/H9D3oH8izys?rel=0"
                                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
                             </iframe>
@@ -228,7 +229,8 @@
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
-                                height="100%" width="100%" 
+                                height="100%" width="100%"
+                                loading="lazy" 
                                 src="https://www.youtube-nocookie.com/embed/DwkDeisygcM?rel=0"
                                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
                             </iframe>
@@ -265,7 +267,8 @@
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
-                                height="100%" width="100%" 
+                                height="100%" width="100%"
+                                loading="lazy" 
                                 src="https://www.youtube-nocookie.com/embed/-bRFWp_P6To?rel=0"
                                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
                             </iframe>
@@ -304,7 +307,8 @@
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
-                                height="100%" width="100%" 
+                                height="100%" width="100%"
+                                loading="lazy" 
                                 src="https://www.youtube-nocookie.com/embed/nh9P5NULeHI?rel=0"
                                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
                             </iframe>
@@ -345,7 +349,8 @@
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
-                                height="100%" width="100%" 
+                                height="100%" width="100%"
+                                loading="lazy" 
                                 src="https://www.youtube-nocookie.com/embed/B3clc3Zk-Kc?rel=0"
                                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
                             </iframe>
@@ -381,7 +386,8 @@
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
-                                height="100%" width="100%" 
+                                height="100%" width="100%"
+                                loading="lazy" 
                                 src="https://www.youtube-nocookie.com/embed/fZ4JaTJ36sw?rel=0"
                                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
                             </iframe>
@@ -414,7 +420,8 @@
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
-                                height="100%" width="100%" 
+                                height="100%" width="100%"
+                                loading="lazy"
                                 src="https://www.youtube-nocookie.com/embed/ufbB1fyKCYM?rel=0"
                                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
                             </iframe>
@@ -476,7 +483,8 @@
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
-                                height="100%" width="100%" 
+                                height="100%" width="100%"
+                                loading="lazy" 
                                 src="https://www.youtube-nocookie.com/embed/BRapuLHI6ok?rel=0"
                                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
                             </iframe>
@@ -520,10 +528,43 @@
                 </div>
             </section>
             <hr>
-            <section>
-                
+            <!-- 出版作品 -->
+            <section id="publication">
+                <h2>出版作品</h2>
+                <!-- Film Grid -->
+                <div id="pubGrid" class="gridContainer">
+                    <div class="gridItem">
+                        <div class="textContainer" onclick="openPubInfoOverlay(1)"> 
+                            <h3>
+                                在流放地的影像：聞海電影研究
+                                <br>
+                                <small>曹愷，等，2020</small>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="gridItem">
+                        <div class="textContainer" onclick="openPubInfoOverlay(2)">
+                            <h3>
+                                存在的 Existent
+                                <br>
+                                <small>聞海，2021</small>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="gridItem">
+                        <div class="textContainer" onclick="openPubInfoOverlay(3)">
+                            <h3>
+                                放逐的凝視：見證中國獨立紀錄片
+                                <br>
+                                <small>文海，2016</small>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
             </section>
-            <section>
+            <hr>
+            <!-- 報名活動 -->
+            <section id="sign-up">
                 
             </section>
         </main>
