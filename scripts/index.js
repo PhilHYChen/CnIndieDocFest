@@ -52,20 +52,24 @@
 
 // Lazy Load Non-Display Iframe and Img Elements:
 // Curator Info Overlay:
-const curatorButtonObserver = new IntersectionObserver((entry) => {
-    if (entry.isIntersecting) {
-        document.querySelector("#curatorInfoOverlay iframe").src =
-            document.querySelector("#curatorInfoOverlay iframe").getAttribute("data-src");
-    };
+const curatorButtonObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            document.querySelector("#curatorInfoOverlay iframe").src =
+                document.querySelector("#curatorInfoOverlay iframe").getAttribute("data-src");
+        };
+    });
 });
 curatorButtonObserver.observe(document.querySelector("#curator button"));
 // Film Info Overlay:
-const filmGridObserver = new IntersectionObserver((entry) => {
-    if (entry.isIntersecting) {
-        document.querySelectorAll("#filmInfoOverlay iframe, #filmInfoOverlay img").forEach((element) => {
-            element.src = element.getAttribute("data-src");
-        });
-    };
+const filmGridObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            document.querySelectorAll("#filmInfoOverlay iframe, #filmInfoOverlay img").forEach((element) => {
+                element.src = element.getAttribute("data-src");
+            });
+        };
+    });
 });
 filmGridObserver.observe(document.querySelector("#filmGrid"));
 
