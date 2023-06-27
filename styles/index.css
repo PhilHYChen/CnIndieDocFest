@@ -370,7 +370,7 @@ section:not(#mainBanner) .buttonContainer {
 }
 
 #curator .flexImage {
-    background-image: url("../images/聞海－青海高原花土溝拍攝《原油》.jpg");
+    background-image: url("../images/聞海－青海高原花土溝拍攝《原油》_c.jpg");
     background-position: 75% top;
     background-repeat: no-repeat;
     background-size: cover;
@@ -456,7 +456,7 @@ section:not(#mainBanner) .buttonContainer {
 }
 
 #filmGrid > :nth-child(1) {
-    background: url(../images/凶年之畔－劇照01.png)
+    background: url(../images/凶年之畔－劇照01.jpg)
         no-repeat center / cover;
 }
 

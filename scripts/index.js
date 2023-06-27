@@ -53,6 +53,8 @@
 // Curator Info Overlay: Open
 function openCuratorInfoOverlay() {
     document.getElementById("curatorInfoOverlay").style.display = "block";
+    // Lazy load:
+    document.querySelector("#curatorInfoOverlay iframe").src = document.querySelector("#curatorInfoOverlay img").getAttribute("data-src");
     // To prevent scrolling in the normal document flow:
     document.querySelector("body").style.overflow = "hidden";
 }
@@ -83,6 +85,8 @@ function openFilmInfoOverlay(childOrder) {
     document.querySelector(selector).style.display = "block";
     document.querySelectorAll(selector + " iframe, " + selector + " img").forEach(element => {
         element.style.display = "none";
+        // Lazy load:
+        element.src = element.getAttribute("data-src")
     })
     document.querySelectorAll(selector + " iframe, " + selector + " img")[0].style.display = "block";
     // To prevent scrolling in the normal document flow:
