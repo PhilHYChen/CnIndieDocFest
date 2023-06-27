@@ -54,7 +54,7 @@
 function openCuratorInfoOverlay() {
     document.getElementById("curatorInfoOverlay").style.display = "block";
     // Lazy load:
-    document.querySelector("#curatorInfoOverlay iframe").src = document.querySelector("#curatorInfoOverlay img").getAttribute("data-src");
+    document.querySelector("#curatorInfoOverlay iframe").src = document.querySelector("#curatorInfoOverlay iframe").getAttribute("data-src");
     // To prevent scrolling in the normal document flow:
     document.querySelector("body").style.overflow = "hidden";
 }
