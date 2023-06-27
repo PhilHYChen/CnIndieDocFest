@@ -483,13 +483,13 @@ section:not(#mainBanner) .buttonContainer {
 }
 
 #filmGrid > :nth-child(5) {
-    background: url(../images/我們－劇照01.png)
+    background: url(../images/我們－劇照01.jpg)
         no-repeat center / cover;
     display: none;
 }
 
 #filmGrid > :nth-child(6) {
-    background: url(../images/赫索格的日子－劇照01.png)
+    background: url(../images/赫索格的日子－劇照01.jpg)
         no-repeat center /cover;
     display: none;
 }
