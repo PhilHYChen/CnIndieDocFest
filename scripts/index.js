@@ -50,11 +50,30 @@
        })
     });
 
+// Lazy Load Non-Display Iframe and Img Elements:
+// Curator Info Overlay:
+const curatorButtonObserver = new IntersectionObserver((entry) => {
+    if (entry.isIntersecting) {
+        document.querySelector("#curatorInfoOverlay iframe").src =
+            document.querySelector("#curatorInfoOverlay iframe").getAttribute("data-src");
+    };
+});
+curatorButtonObserver.observe(document.querySelector("#curator button"));
+// Film Info Overlay:
+const filmGridObserver = new IntersectionObserver((entry) => {
+    if (entry.isIntersecting) {
+        document.querySelectorAll("#filmInfoOverlay iframe, #filmInfoOverlay img").forEach((element) => {
+            element.src = element.getAttribute("data-src");
+        });
+    };
+});
+filmGridObserver.observe(document.querySelector("#filmGrid"));
+
 // Curator Info Overlay: Open
 function openCuratorInfoOverlay() {
     document.getElementById("curatorInfoOverlay").style.display = "block";
     // Lazy load:
-    document.querySelector("#curatorInfoOverlay iframe").src = document.querySelector("#curatorInfoOverlay iframe").getAttribute("data-src");
+    // document.querySelector("#curatorInfoOverlay iframe").src = document.querySelector("#curatorInfoOverlay iframe").getAttribute("data-src");
     // To prevent scrolling in the normal document flow:
     document.querySelector("body").style.overflow = "hidden";
 }
@@ -86,7 +105,7 @@ function openFilmInfoOverlay(childOrder) {
     document.querySelectorAll(selector + " iframe, " + selector + " img").forEach(element => {
         element.style.display = "none";
         // Lazy load:
-        element.src = element.getAttribute("data-src")
+        // element.src = element.getAttribute("data-src")
     })
     document.querySelectorAll(selector + " iframe, " + selector + " img")[0].style.display = "block";
     // To prevent scrolling in the normal document flow:
