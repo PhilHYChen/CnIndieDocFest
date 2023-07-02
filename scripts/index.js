@@ -51,106 +51,82 @@
     });
 
 // Lazy Load Non-Display Iframe and Img Elements:
-// Curator Info Overlay:
-const curatorButtonObserver = new IntersectionObserver((entries) => {
+const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
-            document.querySelector("#curatorInfoOverlay iframe").src =
-                document.querySelector("#curatorInfoOverlay iframe").getAttribute("data-src");
+            entry.target.querySelectorAll("iframe, img").forEach((element) => {
+                element.src =element.getAttribute("data-src");
+            })
         };
     });
 });
-curatorButtonObserver.observe(document.querySelector("#curator button"));
-// Film Info Overlay:
-const filmGridObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            document.querySelectorAll("#filmInfoOverlay iframe, #filmInfoOverlay img").forEach((element) => {
-                element.src = element.getAttribute("data-src");
-            });
-        };
+sectionObserver.observe(
+    document.querySelector("#curator"),
+);
+sectionObserver.observe(
+        document.querySelector("#films"),
+);
+sectionObserver.observe(
+    document.querySelector("#publications")
+);
+
+// Overlay: Open
+function openOverlay(section, childOrder) {
+    // Disable scrolling in Normal Flow:
+    document.querySelector("body").style.overflow = "hidden";
+    // Open overlay:
+    document.querySelector(section + " .overlay").style.display = "block";
+    // Display one specified child item:
+    let displayItem = document.querySelector(section + ` .overlay > :nth-child(${childOrder})`);
+    displayItem.style.display = "block";
+    // Reset media display order:
+    let displayItemMedia = displayItem.querySelectorAll("iframe, img")
+    displayItemMedia.forEach(element => {
+        element.style.display = "none";
+    })
+    displayItemMedia[0].style.display = "block";
+}
+
+// Overlay: Close
+function closeOverlay() {
+    // Resume Scrolling in Normal Flow:
+    document.querySelector("body").style.overflow = "auto";
+    // Close overlay:
+    document.querySelectorAll(".overlay").forEach(element => {
+        element.style.display = "none";
     });
-});
-filmGridObserver.observe(document.querySelector("#filmGrid"));
-
-// Curator Info Overlay: Open
-function openCuratorInfoOverlay() {
-    document.getElementById("curatorInfoOverlay").style.display = "block";
-    // Lazy load:
-    // document.querySelector("#curatorInfoOverlay iframe").src = document.querySelector("#curatorInfoOverlay iframe").getAttribute("data-src");
-    // To prevent scrolling in the normal document flow:
-    document.querySelector("body").style.overflow = "hidden";
-}
-
-// Curator Info Overlay: Close 
-function closeCuratorInfoOverlay() {
-    document.getElementById("curatorInfoOverlay").style.display = "none";
-    // Resume scrolling in the normal document flow:
-    document.querySelector("body").style.overflow = "auto";
-    // Stop iframe video playback by reassigning src value:
-    document.querySelector("#curatorInfoOverlay iframe").src = 
-        document.querySelector("#curatorInfoOverlay iframe").src;
-}
-
-// Film Grid: Show All Films
-function showAllFilms() {
-    document.querySelectorAll("#filmGrid .gridItem").forEach(element => {
-        element.style.display = "block";
-    })
-    // Hide Button "更多放映片"
-    document.querySelector("#showAllFilms").style.display = "none";
-}
-
-// Film Info Overlay: Open (via clicking on filmGrid child items)
-function openFilmInfoOverlay(childOrder) {
-    document.getElementById("filmInfoOverlay").style.display = "block";
-    let selector = `#filmInfoOverlay > :nth-child(${childOrder})`;
-    document.querySelector(selector).style.display = "block";
-    document.querySelectorAll(selector + " iframe, " + selector + " img").forEach(element => {
-        element.style.display = "none";
-        // Lazy load:
-        // element.src = element.getAttribute("data-src")
-    })
-    document.querySelectorAll(selector + " iframe, " + selector + " img")[0].style.display = "block";
-    // To prevent scrolling in the normal document flow:
-    document.querySelector("body").style.overflow = "hidden";
-}
-
-// Film Info Overlay: Close
-function closeFilmInfoOverlay() {
-    document.getElementById("filmInfoOverlay").style.display = "none";
-    document.querySelectorAll("#filmInfoOverlay > *").forEach(element => {
+    // Hide all child items:
+    document.querySelectorAll(".overlay > *").forEach(element => {
         element.style.display = "none";
     })
-    // Resume scrolling in the normal document flow:
-    document.querySelector("body").style.overflow = "auto";
     // Reset filmItem textContainer scroll progress: 
-    document.querySelectorAll("#filmInfoOverlay .filmItem .textContainer").forEach(element => {
+    document.querySelectorAll(".overlay .textContainer").forEach(element => {
         element.scrollTop = 0;
     })
-    // Reset Slide Index of Item Image Slider (see further below):
+    // Reset Slide Index of Item Image Slider (see: // Film Overlay: Item Image Slider):
     slideIndex = 1;
     // Stop iframe video playback by reassigning src value:
-    document.querySelectorAll("#filmInfoOverlay iframe").forEach(element => {
+    document.querySelectorAll(".overlay iframe").forEach(element => {
         element.src = element.src;
     });
+
 }
 
-// Film Info Overlay: Item Image Slider
+// Overlay: Item Image Slider
 let slideIndex = 1;
 
 function rotateSlide(childOrder, slideRotation) {
     // Stop iframe video playback by reassigning src value:
-    document.querySelector(`#filmInfoOverlay > :nth-child(${childOrder}) iframe`).src = 
-        document.querySelector(`#filmInfoOverlay > :nth-child(${childOrder}) iframe`).src;
+    document.querySelector(`#films .overlay > :nth-child(${childOrder}) iframe`).src = 
+        document.querySelector(`#films .overlay > :nth-child(${childOrder}) iframe`).src;
     // Rotate Slides:
     showSlide(childOrder, slideIndex += slideRotation);
 }
 
 function showSlide(childOrder, n) {
     let currentSlides = document.querySelectorAll(
-        `#filmInfoOverlay > :nth-child(${childOrder}) iframe,
-        #filmInfoOverlay > :nth-child(${childOrder}) img`);
+        `#films .overlay > :nth-child(${childOrder}) iframe,
+        #films .overlay > :nth-child(${childOrder}) img`);
     if (n > currentSlides.length) {
         slideIndex = 1
     }
@@ -162,4 +138,12 @@ function showSlide(childOrder, n) {
     }
     currentSlides[slideIndex - 1].style.display = "block";
 }
-// Film Info Overlay: Item Image Slide Selector
+
+// Film Grid: Show All Films
+function showAllFilms() {
+    document.querySelectorAll("#films .gridContainer .gridItem").forEach(element => {
+        element.style.display = "block";
+    })
+    // Hide Button "更多放映片"
+    document.querySelector("#showAllFilms").style.display = "none";
+}

@@ -22,14 +22,14 @@
                     </div>
                 </div>
                 <div id="navMenu" class="flexContainer">
-                    <a href="#curator" onclick="scrollToElement('curator'); closeFilmInfoOverlay();">
+                    <a href="#curator" onclick="scrollToElement('curator'); closeOverlay();">
                         策展人
                     </a>
-                    <a href="#films" onclick="scrollToElement('films'); closeFilmInfoOverlay();">
+                    <a href="#films" onclick="scrollToElement('films'); closeOverlay();">
                         放映片
                     </a>
-                    <a href="#publication" onclick="scrollToElement('publication'); closeFilmInfoOverlay();">出版作品</a>
-                    <a href="" onclick="scrollToElement(''); closeFilmInfoOverlay();">報名活動</a>
+                    <a href="#publications" onclick="scrollToElement('publications'); closeOverlay();">出版作品</a>
+                    <a href="#sign-up" onclick="scrollToElement('sign-up'); closeOverlay();">報名活動</a>
                 </div>
             </nav>
             <div id="scrollProgressIndicator">
@@ -63,7 +63,7 @@
                 <h2>策展人</h2>
                 <h3>聞海（黃文海）</h3>
                 <div class="flexContainer">
-                    <div class="flexTextField">
+                    <div class="textField">
                         <p>
                             電影導演、策展人、獨立中文筆會會員。
                         </p>
@@ -76,21 +76,43 @@
                     </div>
                     <div class="flexImage"></div>
                 </div>
-                <div class="buttonContainer" onclick="openCuratorInfoOverlay()">
+                <div class="buttonContainer" onclick="openOverlay('#curator', 1)">
                     <button>深入介紹</button>
                 </div>
-                <!-- Curator Info Overlay -->
-                <div id="curatorInfoOverlay">
-                    <div class="headerSpace"></div>
-                    <div class="iframeContainer">
-                        <iframe 
-                            height="100%" width="100%"
-                            data-src="https://www.youtube-nocookie.com/embed/4ROpFlxZAdo?rel=0"
-                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="buttonContainer">
-                        <span class="closeButton" onclick="closeCuratorInfoOverlay()"></span>
+                <!-- Overlay -->
+                <div class="overlay">
+                    <div class="displayItem">
+                        <div class="headerSpace"></div>
+                        <div class="mediaContainer">
+                            <iframe 
+                                height="100%" width="100%"
+                                data-src="https://www.youtube-nocookie.com/embed/4ROpFlxZAdo?rel=0"
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="textContainer">
+                            <P>
+                                <strong>聞海（黃文海）</strong>
+                            </P>
+                            <p>
+                                電影導演、策展人、獨立中文筆會會員。
+                            </p>
+                            <p>
+                                1996 年開始獨立電影創作，主要作品《軍訓營紀事》、《喧嘩的塵土》、《夢遊》、《我們》、《殼》、《西方去此不遠》、《凶年之畔》、《喊叫與耳語》、《在流放地》等。
+                            </p>
+                            <p>
+                                多次獲得國際電影節獎勵，如第 16 屆馬賽國際電影節「喬治斯·德·博勒加德」獎；第 28 屆法國真實電影節最高獎；第 65 屆威尼斯電影節「地平線單元」評委會特別獎。
+                            </p>
+                            <p>
+                                2014 年在香港創辦中國獨立紀錄片研究會。
+                            </p>
+                            <p>
+                                2016 年出版專著《放逐的凝視—見證中國獨立紀錄片》（台灣傾向）；2017 年 – 2018 年策劃『決絕：1997 年以來的中國獨立紀錄片影展』；2021 年出版攝影冊《存在的》（台北田園城市）。
+                            </p>
+                        </div>
+                        <div class="buttonContainer">
+                            <span class="closeButton" onclick="closeOverlay()"></span>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -98,10 +120,10 @@
             <!-- 放映片 -->
             <section id="films">
                 <h2>放映片</h2>
-                <!-- Film Grid -->
-                <div id="filmGrid" class="gridContainer">
+                <!-- Grid -->
+                <div class="gridContainer">
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openFilmInfoOverlay(1)">
+                        <div class="textContainer" onclick="openOverlay('#films', 1)">
                             <h3>
                                 凶年之畔
                                 <br>
@@ -110,7 +132,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openFilmInfoOverlay(2)">
+                        <div class="textContainer" onclick="openOverlay('#films', 2)">
                             <h3>
                                 尋找林昭的靈魂
                                 <br>
@@ -119,7 +141,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openFilmInfoOverlay(3)">
+                        <div class="textContainer" onclick="openOverlay('#films', 3)">
                             <h3>
                                 喧嘩的塵土
                                 <br>
@@ -128,7 +150,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openFilmInfoOverlay(4)">
+                        <div class="textContainer" onclick="openOverlay('#films', 4)">
                             <h3>
                                 一個說不
                                 <br>
@@ -137,7 +159,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openFilmInfoOverlay(5)">
+                        <div class="textContainer" onclick="openOverlay('#films', 5)">
                             <h3>
                                 我們
                                 <br>
@@ -146,7 +168,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openFilmInfoOverlay(6)">
+                        <div class="textContainer" onclick="openOverlay('#films', 6)">
                             <h3>
                                 赫索格的日子
                                 <br>
@@ -155,7 +177,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openFilmInfoOverlay(7)">
+                        <div class="textContainer" onclick="openOverlay('#films', 7)">
                             <h3>
                                 沒有電影的電影節
                                 <br>
@@ -164,7 +186,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openFilmInfoOverlay(8)">
+                        <div class="textContainer" onclick="openOverlay('#films', 8)">
                             <h3>
                                 表現主義
                                 <br>
@@ -173,7 +195,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openFilmInfoOverlay(9)">
+                        <div class="textContainer" onclick="openOverlay('#films', 9)">
                             <h3>
                                 喊叫與耳語
                                 <br>
@@ -185,10 +207,10 @@
                 <div id="showAllFilms" class="buttonContainer">
                     <button onclick="showAllFilms()">顯示所有放映片</button>
                 </div>
-                <!-- Film Info Overlay -->
-                <div id="filmInfoOverlay">
+                <!-- Overlay -->
+                <div class="overlay">
                     <!-- #1 -->
-                    <div class="filmItem">
+                    <div class="displayItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
@@ -220,11 +242,11 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
+                            <span class="closeButton" onclick="closeOverlay()"></span>
                         </div>
                     </div>
                     <!-- #2 -->
-                    <div class="filmItem">
+                    <div class="displayItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
@@ -257,11 +279,11 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
+                            <span class="closeButton" onclick="closeOverlay()"></span>
                         </div>
                     </div>                    
                     <!-- #3 -->
-                    <div class="filmItem">
+                    <div class="displayItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
@@ -296,11 +318,11 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
+                            <span class="closeButton" onclick="closeOverlay()"></span>
                         </div>
                     </div>
                     <!-- #4 -->
-                    <div class="filmItem">
+                    <div class="displayItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
@@ -337,11 +359,11 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
+                            <span class="closeButton" onclick="closeOverlay()"></span>
                         </div>
                     </div>
                     <!-- #5 -->
-                    <div class="filmItem">
+                    <div class="displayItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
@@ -373,11 +395,11 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
+                            <span class="closeButton" onclick="closeOverlay()"></span>
                         </div>
                     </div>
                     <!-- #6 -->
-                    <div class="filmItem">
+                    <div class="displayItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
@@ -406,11 +428,11 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
+                            <span class="closeButton" onclick="closeOverlay()"></span>
                         </div>
                     </div>
                     <!-- #7 -->
-                    <div class="filmItem">
+                    <div class="displayItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
@@ -439,11 +461,11 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
+                            <span class="closeButton" onclick="closeOverlay()"></span>
                         </div>
                     </div>
                     <!-- #8 -->
-                    <div class="filmItem">
+                    <div class="displayItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <img data-src="images/表現主義－劇照01.jpg">
@@ -468,11 +490,11 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
+                            <span class="closeButton" onclick="closeOverlay()"></span>
                         </div>
                     </div>
                     <!-- #9 -->
-                    <div class="filmItem">
+                    <div class="displayItem">
                         <div class="headerSpace"></div>
                         <div class="mediaContainer">
                             <iframe
@@ -514,19 +536,19 @@
                             </p>
                         </div>
                         <div class="buttonContainer">
-                            <span class="closeButton" onclick="closeFilmInfoOverlay()"></span>
+                            <span class="closeButton" onclick="closeOverlay()"></span>
                         </div>
                     </div>
                 </div>
             </section>
             <hr>
             <!-- 出版作品 -->
-            <section id="publication">
+            <section id="publications">
                 <h2>出版作品</h2>
-                <!-- Film Grid -->
-                <div id="pubGrid" class="gridContainer">
+                <!-- Grid -->
+                <div class="gridContainer">
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openPubInfoOverlay(1)"> 
+                        <div class="textContainer" onclick="openOverlay('#publications', 1)"> 
                             <h3>
                                 在流放地的影像：聞海電影研究
                                 <br>
@@ -535,7 +557,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openPubInfoOverlay(2)">
+                        <div class="textContainer" onclick="openOverlay('#publications', 2)">
                             <h3>
                                 存在的 Existent
                                 <br>
@@ -544,7 +566,7 @@
                         </div>
                     </div>
                     <div class="gridItem">
-                        <div class="textContainer" onclick="openPubInfoOverlay(3)">
+                        <div class="textContainer" onclick="openOverlay('#publications', 3)">
                             <h3>
                                 放逐的凝視：見證中國獨立紀錄片
                                 <br>
@@ -553,11 +575,97 @@
                         </div>
                     </div>
                 </div>
+                <!-- Overlay -->
+                <div class="overlay">
+                    <!-- #1 -->
+                    <div class="displayItem">
+                        <div class="headerSpace"></div>
+                        <div class="mediaContainer">
+                            <img data-src="images/出版－在地流放的影像.jpg">
+                            <a class="prevButton" onclick="rotateSlide(1, -1)">&#10094;</a>
+                            <a class="nextButton" onclick="rotateSlide(1, 1)">&#10095;</a>
+                        </div>
+                        <div class="textContainer">
+                            <h3>
+                                在流放地的影像：聞海電影研究
+                                <br>
+                                <small>曹愷，等，2020</small>
+                            </h3>
+                            <p>
+                                
+                            </p>
+                            <p>
+                                
+                            </p>
+                            <p>
+                                
+                            </p>
+                        </div>
+                        <div class="buttonContainer">
+                            <span class="closeButton" onclick="closeOverlay()"></span>
+                        </div>
+                    </div>
+                    <!-- #2 -->
+                    <div class="displayItem">
+                        <div class="headerSpace"></div>
+                        <div class="mediaContainer">
+                            <img data-src="images/出版－存在的.jpg">
+                            <a class="prevButton" onclick="rotateSlide(1, -1)">&#10094;</a>
+                            <a class="nextButton" onclick="rotateSlide(1, 1)">&#10095;</a>
+                        </div>
+                        <div class="textContainer">
+                            <h3>
+                                存在的 Existent
+                                <br>
+                                <small>聞海，2021</small>
+                            </h3>
+                            <p>
+                                
+                            </p>
+                            <p>
+                                
+                            </p>
+                            <p>
+                                
+                            </p>
+                        </div>
+                        <div class="buttonContainer">
+                            <span class="closeButton" onclick="closeOverlay()"></span>
+                        </div>
+                    </div>
+                    <!-- #3 -->
+                    <div class="displayItem">
+                        <div class="headerSpace"></div>
+                        <div class="mediaContainer">
+                            <img data-src="images/出版－放逐的凝視.jpg">
+                            <a class="prevButton" onclick="rotateSlide(1, -1)">&#10094;</a>
+                            <a class="nextButton" onclick="rotateSlide(1, 1)">&#10095;</a>
+                        </div>
+                        <div class="textContainer">
+                            <h3>
+                                放逐的凝視：見證中國獨立紀錄片
+                                <br>
+                                <small>文海，2016</small>
+                            </h3>
+                            <p>
+                                
+                            </p>
+                            <p>
+                                
+                            </p>
+                            <p>
+                                
+                            </p>
+                        </div>
+                        <div class="buttonContainer">
+                            <span class="closeButton" onclick="closeOverlay()"></span>
+                        </div>
+                    </div>
             </section>
             <hr>
             <!-- 報名活動 -->
             <section id="sign-up">
-                
+                <h2>報名活動</h2>
             </section>
         </main>
         <!-- 附註列 -->

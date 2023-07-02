@@ -97,14 +97,173 @@ button:active,input:active, select:active {
     background-color: #111;
 }
 
+h2 {
+    color: #f7d089;
+}
+
+h3 {
+    color: #ccc;
+}
+
 hr {
     color: #ccc;
     margin: 0 12.5%;
 }
 
+/* Global: Section */
+
+section:not(#mainBanner) {
+    margin: 5rem 12.5%;
+}
+
+section:not(#mainBanner) h2 {
+    text-align: center;
+}
+
+section:not(#mainBanner) .buttonContainer {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+/* Global: Grid Container */
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+@media screen and (width < 1280px) {
+    .gridContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (width < 640px) {
+    .gridContainer {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.gridContainer .gridItem {
+    align-items: center;
+    height: 30rem;
+    position: relative;
+}
+
+@media screen and (width < 1280px) {
+    .gridContainer .gridItem {
+        height: 17.5rem;
+    }
+}
+
+@media screen and (width < 640px) {
+    .gridContainer .gridItem {
+        height: 15rem;
+    }
+}
+
+.gridContainer .gridItem .textContainer {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 5rem inset black;
+    cursor: pointer;
+}
+
+.gridContainer .gridItem .textContainer h3 {
+    display: none;
+    text-align: center;
+    width: 100%;
+}
+
+.gridContainer .gridItem:hover .textContainer {
+    background-color: rgba(0,0,0,0.5);
+}
+
+@media screen and (width < 1280px) {
+    .gridContainer .gridItem .textContainer {
+        background-color: rgba(0,0,0,0.35);
+    }
+}
+
+.gridContainer .gridItem:hover .textContainer h3 {
+    display: block;
+}
+
+@media screen and (width < 1280px) {
+    .gridContainer .gridItem .textContainer h3 {
+        display: block;
+    }
+}
+
 /* Global: Overlay */
 
-.buttonContainer .closeButton {
+.overlay {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 1;
+}
+
+.overlay .displayItem {
+    display: none;
+    height: 100%;
+}
+
+
+.overlay .displayItem .headerSpace {
+    height: var(--header-height);
+}
+
+
+.overlay .displayItem .mediaContainer {
+    height: calc(0.65 * (100% - var(--header-height)));
+    width: 100%;
+    position: relative;
+}
+
+.overlay .displayItem .mediaContainer iframe, img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.overlay .displayItem .mediaContainer a {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.75);
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.overlay .displayItem .mediaContainer .nextButton {
+    right: 0;
+}
+
+.overlay .displayItem .textContainer {
+    height: calc(0.25 * (100% - var(--header-height)));
+    overflow: auto;
+    padding: 0% 10%;
+}
+
+.overlay .displayItem .buttonContainer {
+    height: calc(0.1 * (100% - var(--header-height)));
+}
+
+
+.overlay .buttonContainer .closeButton {
     display: inline-block;
     background-color: #333;
     border: none;
@@ -118,8 +277,8 @@ hr {
     position: relative;
 }
 
-.buttonContainer .closeButton::before,
-.buttonContainer .closeButton::after {
+.overlay .buttonContainer .closeButton::before,
+.overlay .buttonContainer .closeButton::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -128,17 +287,17 @@ hr {
     background-color: #ccc;
 }
 
-.buttonContainer .closeButton::before {
+.overlay .buttonContainer .closeButton::before {
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.buttonContainer .closeButton::after {
+.overlay .buttonContainer .closeButton::after {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 
-.buttonContainer .closeButton:hover::before,
-.buttonContainer .closeButton:hover::after {
+.overlay .buttonContainer .closeButton:hover::before,
+.overlay .buttonContainer .closeButton:hover::after {
     background-color: #fff;
 }
 
@@ -298,31 +457,7 @@ nav.dropdown {
     width: 0%;
 }
 
-/* Main: General */
-
-h2 {
-    color: #f7d089;
-}
-
-h3 {
-    color: #ccc;
-}
-
-section:not(#mainBanner) {
-    margin: 5rem 12.5%;
-}
-
-section:not(#mainBanner) h2 {
-    text-align: center;
-}
-
-section:not(#mainBanner) .buttonContainer {
-    text-align: center;
-    margin: 1rem 0;
-}
-
 /* Main: Banner */
-
 
 #mainBanner {
     width: 100%;
@@ -390,326 +525,96 @@ section:not(#mainBanner) .buttonContainer {
     }
 }
 
-#curator #curatorInfoOverlay {
-    display: none;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0,0,0,0.9);
-    z-index: 1;
-}
-
-#curator #curatorInfoOverlay .headerSpace {
-    height: var(--header-height);
-}
-
-#curator #curatorInfoOverlay .iframeContainer {
-    height: calc(0.9 * (100% - var(--header-height)));
-    width: 100%;
-}
-
-#curator #curatorInfoOverlay .buttonContainer {
-    height: calc(0.1 * (100% - var(--header-height)));
-}
-
 /* Main: Films */
 
     /* Film Grid */
-#filmGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
-@media screen and (width < 1280px) {
-    #filmGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (width < 640px) {
-    #filmGrid {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
-
-#filmGrid .gridItem {
-    align-items: center;
-    height: 20rem;
-    position: relative;
-}
-
-@media screen and (width < 1280px) {
-    #filmGrid .gridItem {
-        height: 17.5rem;
-    }
-}
-
-@media screen and (width < 640px) {
-    #filmGrid .gridItem {
-        height: 15rem;
-    }
-}
-
-#filmGrid > :nth-child(1) {
+#films .gridContainer > :nth-child(1) {
     background: url(../images/凶年之畔－劇照01.jpg)
         no-repeat center / cover;
 }
 
-#filmGrid > :nth-child(2) {
+#films .gridContainer > :nth-child(2) {
     background: url(../images/尋找林昭的靈魂－劇照01.jpg)
         no-repeat center / cover;
 }
 
-#filmGrid > :nth-child(3) {
+#films .gridContainer > :nth-child(3) {
     background: url(../images/喧囂的塵土－劇照01.jpg)
         no-repeat center / cover;
 }
 
-#filmGrid > :nth-child(4) {
+#films .gridContainer > :nth-child(4) {
     background: url(../images/一個說不－劇照03.jpg)
         no-repeat center / cover;
     display: none;
 }
 
 @media screen and (width >= 640px) {
-    #filmGrid > :nth-child(4) {
+    #films .gridContainer > :nth-child(4) {
         display: block;
     }
 }
 
-#filmGrid > :nth-child(5) {
+#films .gridContainer > :nth-child(5) {
     background: url(../images/我們－劇照01.jpg)
         no-repeat center / cover;
     display: none;
 }
 
-#filmGrid > :nth-child(6) {
+#films .gridContainer > :nth-child(6) {
     background: url(../images/赫索格的日子－劇照01.jpg)
         no-repeat center /cover;
     display: none;
 }
 
 @media screen and (width >= 1280px) {
-    #filmGrid > :nth-child(5) {
+    #films .gridContainer > :nth-child(5) {
         display: block;
     }
-    #filmGrid > :nth-child(6) {
+    #films .gridContainer > :nth-child(6) {
         display: block;
     }    
 }
 
-#filmGrid > :nth-child(7) {
+#films .gridContainer > :nth-child(7) {
     background: url(../images/沒有電影的電影節－劇照01.jpg)
         no-repeat center /cover;
     display: none;
 }
 
-#filmGrid > :nth-child(8) {
+#films .gridContainer > :nth-child(8) {
     background: url(../images/表現主義－劇照01.jpg)
         no-repeat center /cover;
     display: none;
 }
 
-#filmGrid > :nth-child(9) {
+#films .gridContainer > :nth-child(9) {
     background: url(../images/喊叫與耳語－劇照01.png)
         no-repeat center /cover;
     display: none;
 }
+    /* Film Overlay */
 
-#filmGrid .gridItem .textContainer {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    box-shadow: 0 0 5rem inset black;
-    cursor: pointer;
-}
+/* Main: Publications */
 
-#filmGrid .gridItem .textContainer h3 {
-    display: none;
-    text-align: center;
-    width: 100%;
-}
+    /* Publication Grid */
 
-#filmGrid .gridItem:hover .textContainer {
-    background-color: rgba(0,0,0,0.5);
-}
-
-@media screen and (width < 1280px) {
-    #filmGrid .gridItem .textContainer {
-        background-color: rgba(0,0,0,0.35);
-    }
-}
-
-#filmGrid .gridItem:hover .textContainer h3 {
-    display: block;
-}
-
-@media screen and (width < 1280px) {
-    #filmGrid .gridItem .textContainer h3 {
-        display: block;
-    }
-}
-
-    /* Film Info Overlay */
-
-#filmInfoOverlay {
-    display: none;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0,0,0,0.9);
-    z-index: 1;
-}
-
-#filmInfoOverlay .filmItem {
-    display: none;
-    height: 100%;
-    margin: 0% 10%;
-}
-
-
-#filmInfoOverlay .filmItem .headerSpace {
-    height: var(--header-height);
-}
-
-
-#filmInfoOverlay .filmItem .mediaContainer {
-    height: calc(0.65 * (100% - var(--header-height)));
-    width: 100%;
-    position: relative;
-}
-
-#filmInfoOverlay .filmItem .mediaContainer iframe, img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-}
-
-#filmInfoOverlay .filmItem .mediaContainer a {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.75);
-    cursor: pointer;
-    padding: 1rem;
-}
-
-#filmInfoOverlay .filmItem .mediaContainer .nextButton {
-    right: 0;
-}
-
-#filmInfoOverlay .filmItem .textContainer {
-    height: calc(0.25 * (100% - var(--header-height)));
-    overflow: auto;
-}
-
-#filmInfoOverlay .filmItem .buttonContainer {
-    height: calc(0.1 * (100% - var(--header-height)));
-}
-
-/* Main: Publication */
-
-#pubGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
-@media screen and (width < 1280px) {
-    #pubGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (width < 640px) {
-    #pubGrid {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
-
-#pubGrid .gridItem {
-    align-items: center;
-    height: 30rem;
-    position: relative;
-}
-
-@media screen and (width < 1280px) {
-    #pubGrid .gridItem {
-        height: 17.5rem;
-    }
-}
-
-@media screen and (width < 640px) {
-    #pubGrid .gridItem {
-        height: 15rem;
-    }
-}
-
-#pubGrid > :nth-child(1) {
+#publications .gridContainer > :nth-child(1) {
     background: url(../images/出版－在地流放的影像.jpg)
         no-repeat center / cover;
 }
 
-#pubGrid > :nth-child(2) {
+#publications .gridContainer > :nth-child(2) {
     background: url(../images/出版－存在的.jpg)
         no-repeat center / cover;
 }
 
-#pubGrid > :nth-child(3) {
+#publications .gridContainer > :nth-child(3) {
     background: url(../images/出版－放逐的凝視.jpg)
         no-repeat center / cover;
 }
 
-#pubGrid .gridItem .textContainer {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    box-shadow: 0 0 5rem inset black;
-    cursor: pointer;
-}
-
-#pubGrid .gridItem .textContainer h3 {
-    display: none;
-    text-align: center;
-    width: 100%;
-}
-
-#pubGrid .gridItem:hover .textContainer {
-    background-color: rgba(0,0,0,0.5);
-}
-
-@media screen and (width < 1280px) {
-    #pubGrid .gridItem .textContainer {
-        background-color: rgba(0,0,0,0.35);
-    }
-}
-
-#pubGrid .gridItem:hover .textContainer h3 {
-    display: block;
-}
-
-@media screen and (width < 1280px) {
-    #pubGrid .gridItem .textContainer h3 {
-        display: block;
-    }
-}
+    /* Publication Overlay */
 
 /* Footer */
 
