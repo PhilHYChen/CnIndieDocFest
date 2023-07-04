@@ -713,7 +713,68 @@
             <!-- 報名活動 -->
             <section id="sign-up">
                 <h2>報名活動</h2>
+                <form action="" method="">
+                    <ul>
+                        <fieldset class="applicant">
+                            <small>標有<span aria-label="required"> * </span>的欄位為必填。</small>
+                            <legend><strong>您的聯絡資訊</strong></legend>
+                            <li>
+                                <label for="lastName">姓氏<span aria-label="required"> * </span></label>
+                                <input id="lastName" name="last_name" type="text">
+                            </li>
+                            <li>
+                                <label for="firstName">名字<span aria-label="required"> * </span></label>
+                                <input id="firstName" name="first_name" type="text">
+                            </li>
+                            <li>
+                                <label for="email">電子郵件位址<span aria-label="required"> * </span></label>
+                                <input id="email" name="email" type="email">
+                            </li>
+                            <li>
+                                <label for="mobile">行動電話</label>
+                                <input id="mobile" name="mobile" type="tel">
+                            </li>
+                        </fieldset>
+                        <fieldset class="events">
+                            <legend><strong>報名場次</strong></legend>
+                            <li>
+                                <input id="opening" name="opening" type="checkbox">
+                                <label for="opening"><div class="checkbox"></div></label>
+                                <label for="opening">
+                                    開幕場－抗爭與見證：獨立紀錄片與背後的當代中國
+                                    <br>
+                                    <small>
+                                    主講｜本展策展人 聞海
+                                    <br>
+                                    時間｜2021/11/13 (六) 14:00 - 17:00
+                                    <br>
+                                    場地｜木見140 社區共享空間（文山區景美街 140 號）
+                                    </small>
+                                </label>
+                            </li>
+                            <li>
+                                <input id="event01" name="event01" type="checkbox">
+                                <label for="event01"><div class="checkbox"></div></label>
+                                <label for="event01">
+                                    放映片－凶年之畔 WE THE WORKERS
+                                    <br>
+                                    <small>
+                                    聞海 ／ 2017 年 ／ 174 分鐘
+                                    <br>
+                                    時間｜2021/11/15 (一) 18:30 - 21:30
+                                    <br>
+                                    場地｜一碼 IMMA（萬華區中華路二段 364 巷 22 弄 B1）
+                                    </small>
+                                </label>
+                            </li>
+                        </fieldset>
+                    </ul>
+                    <div class="buttonContainer">
+                        <button type="submit">送出報名！</button>
+                    </div>
+                </form>
             </section>
+            <hr>
         </main>
         <!-- 附註列 -->
         <footer>
