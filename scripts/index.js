@@ -61,10 +61,10 @@ const sectionObserver = new IntersectionObserver((entries) => {
     });
 });
 sectionObserver.observe(
-    document.querySelector("#curator"),
+    document.querySelector("#curator")
 );
 sectionObserver.observe(
-        document.querySelector("#films"),
+    document.querySelector("#films")
 );
 sectionObserver.observe(
     document.querySelector("#publications")
@@ -77,14 +77,20 @@ function openOverlay(section, childOrder) {
     // Open overlay:
     document.querySelector(section + " .overlay").style.display = "block";
     // Display one specified child item:
-    let displayItem = document.querySelector(section + ` .overlay > :nth-child(${childOrder})`);
+    let displayItem = document.querySelector(`${section} .overlay > :nth-child(${childOrder})`);
     displayItem.style.display = "block";
     // Reset media display order:
-    let displayItemMedia = displayItem.querySelectorAll("iframe, img")
+    let displayItemMedia = displayItem.querySelectorAll(".mediaContainer iframe, .mediaContainer img")
     displayItemMedia.forEach(element => {
         element.style.display = "none";
     })
     displayItemMedia[0].style.display = "block";
+    // Hide slide control when there is only one slide:
+    if (displayItemMedia.length === 1) {
+        displayItem.querySelectorAll(".mediaContainer a").forEach(element => {
+            element.style.display = "none";
+        })
+    }
 }
 
 // Overlay: Close
@@ -115,28 +121,31 @@ function closeOverlay() {
 // Overlay: Item Image Slider
 let slideIndex = 1;
 
-function rotateSlide(childOrder, slideRotation) {
+function rotateSlide(section, childOrder, slideRotation) {
+    let displayItem = document.querySelector(`${section} .overlay > :nth-child(${childOrder})`);
     // Stop iframe video playback by reassigning src value:
-    document.querySelector(`#films .overlay > :nth-child(${childOrder}) iframe`).src = 
-        document.querySelector(`#films .overlay > :nth-child(${childOrder}) iframe`).src;
+    if (displayItem.querySelectorAll(".mediaContainer iframe")) {
+        displayItem.querySelectorAll(".mediaContainer iframe").forEach(element => {
+            element.src = element.src;
+        })}
     // Rotate Slides:
-    showSlide(childOrder, slideIndex += slideRotation);
+    showSlide(section, childOrder, slideIndex += slideRotation);
 }
 
-function showSlide(childOrder, n) {
-    let currentSlides = document.querySelectorAll(
-        `#films .overlay > :nth-child(${childOrder}) iframe,
-        #films .overlay > :nth-child(${childOrder}) img`);
-    if (n > currentSlides.length) {
+function showSlide(section, childOrder, n) {
+    let displayItemMedia = document.querySelectorAll(
+        `${section} .overlay > :nth-child(${childOrder}) .mediaContainer iframe,
+        ${section} .overlay > :nth-child(${childOrder}) .mediaContainer img`);
+    if (n > displayItemMedia.length) {
         slideIndex = 1
     }
     if (n < 1) {
-        slideIndex = currentSlides.length
+        slideIndex = displayItemMedia.length
     }
-    for (i=0; i < currentSlides.length; i++) {
-        currentSlides[i].style.display = "none";
+    for (i=0; i < displayItemMedia.length; i++) {
+        displayItemMedia[i].style.display = "none";
     }
-    currentSlides[slideIndex - 1].style.display = "block";
+    displayItemMedia[slideIndex - 1].style.display = "block";
 }
 
 // Film Grid: Show All Films

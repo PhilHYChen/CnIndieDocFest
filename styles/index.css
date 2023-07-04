@@ -228,12 +228,13 @@ section:not(#mainBanner) .buttonContainer {
 
 
 .overlay .displayItem .mediaContainer {
-    height: calc(0.65 * (100% - var(--header-height)));
+    height: calc(0.65 * (100% - var(--header-height) - 4.5rem));
     width: 100%;
     position: relative;
 }
 
-.overlay .displayItem .mediaContainer iframe, img {
+.overlay .displayItem .mediaContainer iframe,
+.overlay .displayItem .mediaContainer img {
     height: 100%;
     width: 100%;
     object-fit: contain;
@@ -253,13 +254,31 @@ section:not(#mainBanner) .buttonContainer {
 }
 
 .overlay .displayItem .textContainer {
-    height: calc(0.25 * (100% - var(--header-height)));
+    height: calc(0.35 * (100% - var(--header-height) - 4.5rem));
     overflow: auto;
     padding: 0% 10%;
 }
 
+.overlay .displayItem .linkContainer {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-evenly;
+    overflow: auto;
+    margin: 13px 10% 5px;
+}
+
+.overlay .displayItem .linkContainer a {
+    text-decoration: none;
+}
+
+@media screen and (width < 640px) {
+    .overlay .displayItem .linkContainer {
+        justify-content: start;
+    }
+}
+
 .overlay .displayItem .buttonContainer {
-    height: calc(0.1 * (100% - var(--header-height)));
+    height: 2.5rem;
 }
 
 
@@ -615,6 +634,18 @@ nav.dropdown {
 }
 
     /* Publication Overlay */
+
+#publications .overlay .displayItem .mediaContainer {
+    height: calc(0.6 * (100% - var(--header-height) - 4.5rem - 70px));
+    width: 100%;
+    position: relative;
+}
+
+#publications .overlay .displayItem .textContainer {
+    height: calc(0.4 * (100% - var(--header-height) - 4.5rem - 70px));
+    overflow: auto;
+    padding: 0% 10%;
+}
 
 /* Footer */
 
